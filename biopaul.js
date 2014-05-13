@@ -512,7 +512,7 @@ var addComment={moveForm:function(a,b,c,d){var e,f=this,g=f.I(a),h=f.I(c),i=f.I(
 
 jQuery(document).ready(function($){
   /* === Gravatar === */
-  $('#email').blur(function(){$('img.gravatar').attr('src','http://www.gravatar.com/avatar.php?gravatar_id=' + hex_md5($('#email').val()) + '&size=40&r=G&d=mm')});
+  $('#email').blur(function(){$('img.gravatar').attr('src','http://www.gravatar.com/avatar.php?gravatar_id=' + hex_md5($('#email').val()) + '&size=40&r=G&d=mm').addClass('glow')});
 
   /* === Pretty Photo === */
   $("a[rel^='prettyPhoto'],a[href$='.jpg'],a[href$='.gif'],a[href$='.png']").prettyPhoto();
