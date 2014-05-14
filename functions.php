@@ -4,8 +4,7 @@
 	require_once(TEMPLATEPATH.'/includes/widgets.php');
 	require_once(TEMPLATEPATH.'/includes/shortcodes.php');
 	require_once(TEMPLATEPATH.'/includes/tinymce/tinymce.php');
-?>
-<?php
+ 
 	// 注册导航菜单
 	function register_biopaul_menus() {
 		register_nav_menus(
@@ -70,8 +69,7 @@
 		}
 	add_action('wp_enqueue_scripts', 'biopaul_wp_scripts');
 	
-?>
-<?php
+ 
 	// 注册body类名
 	add_filter('body_class','body_class_handler');
 	function body_class_handler($classes) {
@@ -112,8 +110,7 @@
 	remove_filter('the_content', 'wpautop');
 	add_filter('the_content', 'wpautop' , 99);
 	add_filter('the_content', 'shortcode_unautop',100);
-?>
-<?php
+ 
 	// 注册自定义文章类型——Work（作品）
 	function register_biopaul_works_post_type() {
 		$labels = array(
@@ -171,8 +168,7 @@
 		);
 	}
 	add_action('init', 'create_work_taxonomies', 2);
-?>
-<?php
+ 
 	// 作品Meta信息
 	add_action("add_meta_boxes", "add_work_meta_box");
 	add_action('save_post', 'update_work_meta_box');
@@ -212,9 +208,7 @@
 			update_post_meta($post->ID, "work_link_url", $_POST["work_link_url"]);
 		}
 	}
-?>
-
-<?php
+ 
 	// 自定义Gravatar
 	function biopaul_gravatar($avatar_defaults) {
 		$biopaul_avatar = get_template_directory_uri().'/images/gravatar.png';
