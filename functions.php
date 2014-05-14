@@ -1,6 +1,6 @@
 <?php
 //本文件不要轻易替换
-//上传前修改94-100，347-357行，邮件、禁用自动草稿可能不需要
+//上传前修改57-70，259-270行，邮件、禁用自动草稿可能不需要
 	require_once(TEMPLATEPATH.'/includes/widgets.php');
 	require_once(TEMPLATEPATH.'/includes/shortcodes.php');
 	require_once(TEMPLATEPATH.'/includes/tinymce/tinymce.php');

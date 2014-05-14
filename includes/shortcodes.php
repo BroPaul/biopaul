@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 	/* === Skills shortcode === */
 	function skills_shortcode( $atts, $content = null ) {
 		extract( shortcode_atts( array(

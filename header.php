@@ -7,72 +7,72 @@
 <meta charset="utf-8">
 <title><?php wp_title('|', true, 'right'); ?><?php bloginfo('name'); ?></title>
 <?php
-	$site_description = '';
-	$site_keywords = '';
-	$site_author = '';
-	if (function_exists('ot_get_option')) {
-		$site_description = ot_get_option('site_description');
-		$site_keywords = ot_get_option('site_keywords');
-		$site_author = ot_get_option('site_author');
-	}
+  $site_description = '';
+  $site_keywords = '';
+  $site_author = '';
+  if (function_exists('ot_get_option')) {
+    $site_description = ot_get_option('site_description');
+    $site_keywords = ot_get_option('site_keywords');
+    $site_author = ot_get_option('site_author');
+  }
 ?>
 <meta name="description" content="<?php echo $site_description; ?>">
 <meta name="keywords" content="<?php echo $site_keywords; ?>">
 <meta name="author" content="<?php echo $site_author; ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <!--[if lt IE 9]>
-	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
 <?php
-	if (function_exists('ot_get_option')) {
-		if ($biopaul_fav_icon = ot_get_option('fav_icon')) {
+  if (function_exists('ot_get_option')) {
+    if ($biopaul_fav_icon = ot_get_option('fav_icon')) {
 ?>
 <link rel="shortcut icon" href="<?php echo $biopaul_fav_icon; ?>">
 <?php
-		}
-		if ($biopaul_apple_touch_icon = ot_get_option('apple_touch_icon')) {
+    }
+    if ($biopaul_apple_touch_icon = ot_get_option('apple_touch_icon')) {
 ?>
 <link rel="apple-touch-icon" href="<?php echo $biopaul_apple_touch_icon; ?>">
 <?php
-		}
-		if ($biopaul_apple_touch_icon_72 = ot_get_option('apple_touch_icon_72')) {
+    }
+    if ($biopaul_apple_touch_icon_72 = ot_get_option('apple_touch_icon_72')) {
 ?>
 <link rel="apple-touch-icon" sizes="72x72" href="<?php echo $biopaul_apple_touch_icon_72; ?>">
 <?php
-		}
-		if ($biopaul_apple_touch_icon_114 = ot_get_option('apple_touch_icon_114')) {
+    }
+    if ($biopaul_apple_touch_icon_114 = ot_get_option('apple_touch_icon_114')) {
 ?>
 <link rel="apple-touch-icon" sizes="114x114" href="<?php echo $biopaul_apple_touch_icon_114; ?>">
 <?php
-		}
-	}
+    }
+  }
 
 if (!preg_match('/Mobile/', $_SERVER['HTTP_USER_AGENT'])) {
     echo '<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">';
 }
 ?>
 <?php
-	wp_head();
+  wp_head();
 ?>
 <style type="text/css">
 @media screen and (max-width: 640px) {
-	body{background:#EBEBEB}
+  body{background:#EBEBEB}
 }
 <?php
-	if (function_exists('ot_get_option')) {
-		if ($background_pattern = ot_get_option('background_pattern')){
-			echo 'body{background:url('.$background_pattern.') center center;background-size: cover;}';
-		}
-		if ($custom_css = ot_get_option('custom_css')){
-			echo $custom_css;
-		}
-	}
+  if (function_exists('ot_get_option')) {
+    if ($background_pattern = ot_get_option('background_pattern')){
+      echo 'body{background:url('.$background_pattern.') center center;background-size: cover;}';
+    }
+    if ($custom_css = ot_get_option('custom_css')){
+      echo $custom_css;
+    }
+  }
 ?>
 </style>
 <script>
 <?php
-	if (function_exists('ot_get_option')) {
-		if (ot_get_option('if_ajaxify') == "on"){
+  if (function_exists('ot_get_option')) {
+    if (ot_get_option('if_ajaxify') == "on"){
 ?>
 // Ajax功能
 function loadContent(url){
@@ -144,8 +144,8 @@ $(document).ready(function(){
 
 //重新加载js
 function reloadJs(){
-	// Gravatar
-	$('#email').blur(function(){$('img.gravatar').attr('src','http://www.gravatar.com/avatar.php?gravatar_id=' + hex_md5($('#email').val()) + '&size=40&r=G&d=mm')});
+  // Gravatar
+  $('#email').blur(function(){$('img.gravatar').attr('src','http://www.gravatar.com/avatar.php?gravatar_id=' + hex_md5($('#email').val()) + '&size=40&r=G&d=mm').addClass('glow')});
     //prettyPhoto
     $("a[rel^='prettyPhoto'],a[href$='.jpg'],a[href$='.gif'],a[href$='.png']").prettyPhoto();
     //isotope
@@ -174,63 +174,63 @@ function reloadJs(){
     }); 
     // mediaElement
     if (typeof mejs !== 'undefined'){
-  		$('#content video,#content audio').mediaelementplayer();
-  	}
+      $('#content video,#content audio').mediaelementplayer();
+    }
 
     //多说
     if (typeof DUOSHUO !== 'undefined'){
-		DUOSHUO.RecentComments && DUOSHUO.RecentComments('.ds-recent-comments');
-		DUOSHUO.RecentVisitors('.ds-recent-visitors');
-		DUOSHUO.EmbedThread('.ds-thread');
+    DUOSHUO.RecentComments && DUOSHUO.RecentComments('.ds-recent-comments');
+    DUOSHUO.RecentVisitors('.ds-recent-visitors');
+    DUOSHUO.EmbedThread('.ds-thread');
     }
     // 百度统计
     if(typeof _hmt != "undefined") {
-		pageURL=window.location.pathname;
-		_hmt.push(['_trackPageview', pageURL]);
+    pageURL=window.location.pathname;
+    _hmt.push(['_trackPageview', pageURL]);
     }
     
     // 其他自定义
 <?php 
-			if ($custom_reloadjs = ot_get_option('custom_reloadjs')){
-				echo $custom_reloadjs;
-			}
+      if ($custom_reloadjs = ot_get_option('custom_reloadjs')){
+        echo $custom_reloadjs;
+      }
 ?>
 }//reloadJs ends
-<?php	
-		}
-		// Header Analytics
-	}
+<?php 
+    }
+    // Header Analytics
+  }
 ?>
 </script>
 <?php 
-	if (function_exists('ot_get_option')) {
-		if ($google_analytics_code = ot_get_option('google_analytics_code')) {
+  if (function_exists('ot_get_option')) {
+    if ($google_analytics_code = ot_get_option('google_analytics_code')) {
             echo $google_analytics_code;
         }
     }
  ?>
 </head>
 <?php
-	$body_class = '';
-	$pages = array();
-	if (function_exists('ot_get_option')) {
-		$pages['profile'] = ot_get_option('profile_page');
-		$pages['resume'] = ot_get_option('resume_page');
-		$pages['portfolio'] = ot_get_option('portfolio_page');
-		$pages['blog'] = ot_get_option('blog_page');
-		$pages['contact'] = ot_get_option('contact_page');
-	}
-	foreach ($pages as $key=>$page) { 
-		if ($post->ID == $page) {
-			$body_class = $key;
-			break;
-		}
-	}
+  $body_class = '';
+  $pages = array();
+  if (function_exists('ot_get_option')) {
+    $pages['profile'] = ot_get_option('profile_page');
+    $pages['resume'] = ot_get_option('resume_page');
+    $pages['portfolio'] = ot_get_option('portfolio_page');
+    $pages['blog'] = ot_get_option('blog_page');
+    $pages['contact'] = ot_get_option('contact_page');
+  }
+  foreach ($pages as $key=>$page) { 
+    if ($post->ID == $page) {
+      $body_class = $key;
+      break;
+    }
+  }
 ?>
 <body <?php body_class($body_class); ?>>
-	<div class="wrapper">
+  <div class="wrapper">
         <nav>
-        	<?php
-				wp_nav_menu(array('theme_location' => 'biopaul-main-menu', 'container' => 'false', 'menu_class' => 'menu', 'link_before' => '<span><span>', 'link_after' => '</span></span>'));
-			?>
+          <?php
+        wp_nav_menu(array('theme_location' => 'biopaul-main-menu', 'container' => 'false', 'menu_class' => 'menu', 'link_before' => '<span><span>', 'link_after' => '</span></span>'));
+      ?>
         </nav>
