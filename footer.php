@@ -43,15 +43,5 @@
 		}
 	}
  ?>
-<!-- 仅bropaul.com适用 -->
-<script>
-if(!/Mobile/.test(navigator.userAgent)){
-	document.writeln('<audio id="paul" src="http://res.iciba.com/resource/amp3/0/0/6c/63/6c63212ab48e8401eaf6b59b95d816a9.mp3"></audio>');
-}
-$("#content").on("click","a[rel='author']",function(){
-	alert("\u5f69\u86cb\u5df2\u7ecf\u653e\u5728\u5de6\u4e0b\u89d2\u5566~ \u8c22\u8c22\u60a8\u5bf9\u535a\u4e3b\u7684\u5173\u5fc3");
-	return false;
-})
-</script>
 </body>
 </html>

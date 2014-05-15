@@ -46,13 +46,11 @@
 <?php
     }
   }
-
-if (!preg_match('/Mobile/', $_SERVER['HTTP_USER_AGENT'])) {
-    echo '<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">';
-}
-?>
-<?php
   wp_head();
+
+  if (!preg_match('/Mobile/', $_SERVER['HTTP_USER_AGENT'])) {
+    echo '<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">';
+  }
 ?>
 <style type="text/css">
 @media screen and (max-width: 640px) {
@@ -75,66 +73,11 @@ if (!preg_match('/Mobile/', $_SERVER['HTTP_USER_AGENT'])) {
     if (ot_get_option('if_ajaxify') == "on"){
 ?>
 // Ajax功能
-function loadContent(url){
-$.ajax({
-    type: "POST",
-    url: url,
-    timeout:5000,
-    error:function(){alert('累了，加载不动了... 请手动刷新页面')},
-    beforeSend: function() {$('#loader').show();$('object,embed').hide()},
-    success:function(result){
-      //删除audio
-      // result= result.replace(/<div id="bgm"(.+)<\/div>/,'');
-      //更改body class
-      bodyclass =(/<body class=\"(.+)\">/g).exec(result)[1];
-      $("body").attr('class',bodyclass);
-      //更改title
-      data = result.split('<title>')[1];
-      newtitle = data.split('</title>')[0];
-      jQuery(document).attr('title', newtitle); 
-      //替换内容
-      data = result.split('<wp_footer>')[2];
-      new_wp_footer = data.split('</wp_footer>')[0];
-      $('wp_footer').html(new_wp_footer);
-      $('#content').html($(result).find("#content").html());
-      $('nav').html($(result).find("nav").html());
-      $('#loader').hide();
-      //单页导航
-      // postnav=$(result).find(".wpspn-area").html();
-      // $('.wpspn-area').remove();
-      // $('<div class="wpspn-area"></div>').html(postnav).appendTo('body');
-      //页面滚动
-      if (target=location.hash) {
-        $("body").animate({scrollTop: $(target).offset().top })
-      }else{
-        $("body").animate({scrollTop:0})
-      }
-      //重新加载的js
-      reloadJs();
-      //处理前进、后退事件
-      initialUrl= "http://"+location.host+location.pathname;
-        // console.log("initialUrl="+initialUrl );
-      window.onpopstate = function() {
-        var newUrl = "http://"+location.host+location.pathname;
-        // console.log("location =http://"+location.host+location.pathname+"\n==========");
-        if (initialUrl == newUrl) return;
-        loadContent(location.href);
-      }
-    }
-  })
-}
+function loadContent(url){$.ajax({type:"POST",url:url,timeout:5000,error:function(){alert("累了，加载不动了... 请手动刷新页面")},beforeSend:function(){$("#loader").show();$("object,embed").hide()},success:function(result){bodyclass=(/<body class=\"(.+)\">/g).exec(result)[1];$("body").attr("class",bodyclass);data=result.split("<title>")[1];newtitle=data.split("<\/title>")[0];jQuery(document).attr("title",newtitle);data=result.split("<wp_footer>")[2];new_wp_footer=data.split("</wp_footer>")[0];$("wp_footer").html(new_wp_footer);$("#content").html($(result).find("#content").html());$("nav").html($(result).find("nav").html());$("#loader").hide();if(target=location.hash){$("body").animate({scrollTop:$(target).offset().top})}else{$("body").animate({scrollTop:0})}reloadJs();initialUrl="http://"+location.host+location.pathname;window.onpopstate=function(){var newUrl="http://"+location.host+location.pathname;if(initialUrl==newUrl){return}loadContent(location.href)}}})};
 
 // 全站Ajax
-function ajaxify(){
-  $('body').on('click','a',function(e){
-    var link_uri=$(this).attr('href'),link_url=this.href;
-    if (link_url.indexOf("<?php echo $_SERVER['SERVER_NAME'] ?>") >= 0 &&link_url.indexOf('/wp-')<0 &&link_url.indexOf('author')<0 && link_uri.indexOf('#respond')<0 && link_uri.charAt(0)!="#") {
-        e.preventDefault();
-        window.history.pushState(null,null,link_url);
-        loadContent(link_url);
-    }
-  });
-}
+function ajaxify(){$("body").on("click","a",function(e){var link_uri=$(this).attr("href"),link_url=this.href;if(link_url.indexOf("<?php echo $_SERVER['SERVER_NAME'] ?>")>=0&&link_url.indexOf("/wp-")<0&&link_url.indexOf("author")<0&&link_uri.indexOf("#respond")<0&&link_uri.charAt(0)!="#"){e.preventDefault();window.history.pushState(null,null,link_url);loadContent(link_url)}})};
+
 //手机不进行Ajax化
 $(document).ready(function(){
   if(!/Mobile/.test(navigator.userAgent)){
@@ -144,50 +87,7 @@ $(document).ready(function(){
 
 //重新加载js
 function reloadJs(){
-  // Gravatar
-  $('#email').blur(function(){$('img.gravatar').attr('src','http://www.gravatar.com/avatar.php?gravatar_id=' + hex_md5($('#email').val()) + '&size=40&r=G&d=mm').addClass('glow')});
-    //prettyPhoto
-    $("a[rel^='prettyPhoto'],a[href$='.jpg'],a[href$='.gif'],a[href$='.png']").prettyPhoto();
-    //isotope
-    var $container=$('#portfolio-list');
-    $container.isotope({
-      filter: '*',
-      layoutMode: 'masonry',
-      animationOptions: {
-        duration:750,
-        easing:'linear'
-       }
-    }); 
-    $('body').on('click','#portfolio-filter a', function(e) {
-      e.preventDefault();
-      $('.active').removeClass('active');
-      $(this).parent().addClass('active');
-      var selector = $(this).attr('data-filter');
-      $container.isotope({ 
-        filter: selector,
-        animationOptions: {
-          duration:750,
-          easing:'linear',
-          queue:false,
-        }
-      });
-    }); 
-    // mediaElement
-    if (typeof mejs !== 'undefined'){
-      $('#content video,#content audio').mediaelementplayer();
-    }
-
-    //多说
-    if (typeof DUOSHUO !== 'undefined'){
-    DUOSHUO.RecentComments && DUOSHUO.RecentComments('.ds-recent-comments');
-    DUOSHUO.RecentVisitors('.ds-recent-visitors');
-    DUOSHUO.EmbedThread('.ds-thread');
-    }
-    // 百度统计
-    if(typeof _hmt != "undefined") {
-    pageURL=window.location.pathname;
-    _hmt.push(['_trackPageview', pageURL]);
-    }
+ $("#email").blur(function(){$("img.gravatar").attr("src","http://www.gravatar.com/avatar.php?gravatar_id="+hex_md5($("#email").val())+"&size=40&r=G&d=mm").addClass("glow")});$("a[rel^='prettyPhoto'],a[href$='.jpg'],a[href$='.gif'],a[href$='.png']").prettyPhoto();var $container=$("#portfolio-list");$container.isotope({filter:"*",layoutMode:"masonry",animationOptions:{duration:750,easing:"linear"}});$("body").on("click","#portfolio-filter a",function(e){e.preventDefault();$(".active").removeClass("active");$(this).parent().addClass("active");var selector=$(this).attr("data-filter");$container.isotope({filter:selector,animationOptions:{duration:750,easing:"linear",queue:false,}})});if(typeof mejs!=="undefined"){$("#content video,#content audio").mediaelementplayer()}if(typeof DUOSHUO!=="undefined"){DUOSHUO.RecentComments&&DUOSHUO.RecentComments(".ds-recent-comments");DUOSHUO.RecentVisitors(".ds-recent-visitors");DUOSHUO.EmbedThread(".ds-thread")}if(typeof _hmt!="undefined"){pageURL=window.location.pathname;_hmt.push(["_trackPageview",pageURL])};
     
     // 其他自定义
 <?php 
@@ -198,16 +98,16 @@ function reloadJs(){
 }//reloadJs ends
 <?php 
     }
-    // Header Analytics
   }
 ?>
 </script>
+<!-- Header Analytics -->
 <?php 
   if (function_exists('ot_get_option')) {
     if ($google_analytics_code = ot_get_option('google_analytics_code')) {
-            echo $google_analytics_code;
-        }
+      echo $google_analytics_code;
     }
+  }
  ?>
 </head>
 <?php

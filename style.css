@@ -1,10 +1,10 @@
 /*
-	Theme Name: BioPaul分享版
+	Theme Name: BioPaul本地版
 	Theme URI: http://themes.themebakers.com/biopic/
 	Description: A responsive wordpress theme adapted from Biopic.
 	Author: Paul Allen
 	Author URI: http://www.bropaul.com/
-	Version: 2014.5.13
+	Version: 2014.5.14
 */
 
 /*Base*/
@@ -52,33 +52,26 @@ code,pre{
 	overflow: auto;
 }
 pre {
-    background-image: url('images/pre-back.gif');
+    background-image: url(images/pre-back.gif);
     padding: 0 0.7em;
     border-left: 5px solid #09f;
     margin: 1.7em 0 1.7em 0.3em;
     color: #666;
-    /*white-space: pre-wrap;                 */
-    /*white-space: -moz-pre-wrap !important; */
-    /*white-space: -pre-wrap;                */
-    /*white-space: -o-pre-wrap;              */
-    /*word-wrap: break-word;                 */
 }
 code{
     padding: 2px 4px;
     margin: auto 3px;
 	color: #d14;
 	background-color: #f7f7f9;
-	/*white-space: nowrap;*/
 }
 pre code {
-/*	display: block;*/
 	font-size: 11px;
 	border: 0px;
 }
 
 /*	Blockquotes  */
 blockquote {
-	background: url(http://bcs.duapp.com/myfile/bg/quotes.png) no-repeat right -10px rgba(0, 153, 255, 0.15);
+	background: url(images/quotes.png) no-repeat right -10px rgba(0, 153, 255, 0.15);
 	padding:20px 20px 10px 20px;
 	margin: 15px 20px;
 	border-left: 4px solid #999;
@@ -87,7 +80,6 @@ blockquote {
 	font-size: 13px;
 	word-wrap: break-word;
 }
-/* blockquote overflow: hidden 会导致《驳各种<哆啦A梦>假结局》文字围绕图片的效果失效*/
 blockquote cite:before { content: "\2014 \0020"; }
 blockquote cite a, blockquote cite a:visited{ color: #666; }
 
@@ -114,8 +106,8 @@ ul ul li, ul ol li,ol ol li, ol ul li { margin-bottom: 6px; }
 li { line-height: 18px; margin-bottom: 6px; }
 ul.large li { line-height: 21px; }
 li p { line-height: 21px; }
-ul.arrow ul { list-style-image: url("images/list-arrow.png"); }
-ul.check ul { list-style-image: url("images/list-check.png"); }
+ul.arrow ul { list-style-image: url(images/pre-back.gif); }
+ul.check ul { list-style-image: url(images/pre-back.gif); }
 
 /* #Alert boxes*/
 div.alert-box {
@@ -127,24 +119,24 @@ div.alert-box {
 }
 div.alert-box p {font-size: 12px;}
 div.standard {
-    background: url('images/alert-standard.png') no-repeat 8px 8px #BDE3F8;
+    background: url(images/alert-standard.png) no-repeat 8px 8px #BDE3F8;
     border: 1px solid #9AC9E4;
     color: #09F;
 }
 div.warning {
-    background: url('images/alert-warning.png') no-repeat 8px 8px #FFF7CA;
+    background: url(images/alert-warning.png) no-repeat 8px 8px #FFF7CA;
     border: 1px solid #EBD47C;
     color: #A86602;
 }
 
 div.success {
-    background: url('images/alert-success.png') no-repeat 8px 8px #ECF7D9;
+    background: url(images/alert-success.png) no-repeat 8px 8px #ECF7D9;
     border: 1px solid #B3DC77;
     color: #4E8A10;
 }
 
 div.error {
-    background: url('images/alert-error.png') no-repeat 8px 8px #FFE3E3;
+    background: url(images/alert-error.png) no-repeat 8px 8px #FFE3E3;
     border: 1px solid #EF999E;
     color: #D8000C;
 }
@@ -159,7 +151,7 @@ button,
 input[type="submit"],
 input[type="reset"],
 input[type="button"] {
-  background: url('images/gradient.png') #09f;
+  background: url(images/gradient.png) #09f;
   border: none;
   padding: 4px 12px;
   -moz-border-radius: 3px;
@@ -285,14 +277,14 @@ ul.tabs {zoom: 1;}
 
 div.accordion .atitle a,div.toggle .ttitle a {
 	padding: 10px 0 10px 30px;
-	background: url('images/icons.png') no-repeat -400px -200px;
+	background: url(images/icons.png) no-repeat -400px -200px;
     margin-top: -1px;
     display: block;
     border: 1px solid #ddd;
 }
 
 div.accordion .active a,div.toggle .active a {
-    background: url('images/icons.png') no-repeat -400px -240px;
+    background: url(images/icons.png) no-repeat -400px -240px;
 }
 
 div.accordion .atitle a:hover, div.accordion .atitle a:focus,div.toggle .ttitle a:hover, div.toggle .ttitle a:focus{
@@ -337,24 +329,12 @@ nav li a span span { visibility: hidden; }
 nav li.current-menu-item{ padding-left: 0px; }
 nav li.current-menu-item a { width: 100px; height: 40px; }
 nav li.current-menu-item a span span { visibility: visible; }
-/*nav li.profile.current-menu-item a > span { padding-left: 39px; }
-nav li.resume.current-menu-item a > span { padding-left: 38px; }
-nav li.portfolio.current-menu-item a > span { padding-left: 38px; }
-nav li.blog.current-menu-item a > span{ padding-left: 38px; }
-nav li.contact.current-menu-item a > span { padding-left: 38px; }
-nav li.clients.current-menu-item a > span { padding-left: 38px; }
-nav li.ourteam.current-menu-item a > span { padding-left: 38px; }
-nav li.services.current-menu-item a > span{ padding-left: 38px; }
-nav li.testimonials.current-menu-item a > span{ padding-left: 38px; }
-nav li.links.current-menu-item a > span { padding-left: 38px; }  可以简写*/
 nav li.current-menu-item a > span{
 	padding-left: 40px;
 	width: 60px;
 }
 .content {width: 920px;}
 .ownerInfo {float:left; width:520px; margin: 40px 0 0 90px;text-align: justify;}
-/*.head img{ float: left; margin-right: 15px;}
-.head .name { float: left;font-size: 36px;line-height: 28px;} 方形靠左对齐*/
 .head p {
 font-style: italic;
 text-align: center;
@@ -366,7 +346,7 @@ height: 100px;
 vertical-align: middle;
 border-radius: 50px;
 cursor: pointer;
-box-shadow: 0 0 10px #666;
+box-shadow: 0 0 6px #666;
 -webkit-transition: box-shadow linear .3s,-webkit-transform linear .3s;
 -moz-transition:box-shadow linear .3s,-moz-transform linear .3s;
 transition: box-shadow linear .3s,transform linear .3s;
@@ -388,7 +368,7 @@ position: relative;
     transition: left linear .3s,opacity linear .3s;
 }
 .head:hover .avatar{
-box-shadow:0 0 15px #555;
+box-shadow:0 0 15px #333,0 0 30px #999;
 transform: rotate(360deg);
 -ms-transform: rotate(360deg);
 -webkit-transform: rotate(360deg);
@@ -491,19 +471,6 @@ i.speaker{background: url(images/icons.png) no-repeat 0 -120px;padding: 0 7px;cu
 .main { float: left; width: 560px;}
 .main.full-width{ width: 100%; }
 
-/* Contact */
-
-
-/* Comments */
-/*.blog .comments ol.commentsList{ margin-top: 20px; margin-left: 0px; }
-.blog .commentMetaTop { margin-bottom: 10px; }
-.blog .commentMetaTop img { float: left; margin-right: 10px; }
-.blog .comment { padding-bottom: 10px; }
-.blog .children .comment { padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px; }
-.blog .comments form{ margin-top: 10px; }
-.blog .comments form textarea { width: 470px; height: 200px; }
-.blog .comments form input.submit { float: right; }*/
-
 /* Footer */
 footer{clear: both; 
 	/*background: url(images/shadow-footer-960.png) no-repeat 50px 0;*/
@@ -530,13 +497,8 @@ footer p{text-align: center;}
 
  /* Portfolio*/
 
- /* Contact */
-/* .contact iframe { width: 570px; height: 225px; }
- .contact form{ width: 320px; }*/
-
  /* Blog */
  .main { float: left; width: 360px; }
-/* .blog .comments form textarea { width: 350px; height: 200px; }*/
 
  }
 
@@ -563,14 +525,9 @@ footer p{text-align: center;}
  .skills .description{ margin-left: 0px; float: left; }
  .skills .rating { float: right; }
 
- /* Contact */
-/* .contact iframe { width: 300px; height: 155px; }
- .contact form{ width: 290px; }*/
-
  /* Blog */
  .main { float: left; width: 300px; }
  .post .main { width: 300px; }
-/* .blog .comments form textarea { width: 290px; height: 200px; }*/
 
  /* Hide some elements */
  .hidden { display: none; }
@@ -598,15 +555,11 @@ footer p{text-align: center;}
  /* Resume */
  .skills .rating { float: left; margin-left: 0px; }
 
- /* Contact */
-/* .contact iframe { width: 210px; }
- .contact form{ width: 200px; }*/
 
  /* Blog */
  .main { width: 210px; }
  .post .main { width: 210px; }
 /* .blog .comments form{ width: 200px; }
- .blog .comments form input.submit { float: right; margin-right: -10px; }*/
 
  /* Hide some elements */
  .hidden { display: none; }
@@ -616,8 +569,6 @@ footer p{text-align: center;}
 /* #Clearing
 ================================================== */
 
-/* Use clearfix class on parent to clear nested columns,
-or wrap each row of columns in a <div class="row"> */
 .clearfix:before,
 .clearfix:after,
 .row:before,
@@ -664,7 +615,7 @@ nav li.current-menu-item a {
 	font-style:italic;
 	font-weight:bold;
 }
-nav li a > span{background: url('images/icons.png') no-repeat transparent;}
+nav li a > span{background: url(images/icons.png) no-repeat transparent;}
 nav li.profile a > span {background-position:0 0}
 nav li.profile.current-menu-item a > span {background-position:-400px 0;}
 nav li.resume a > span {background-position:-35px 0;}
@@ -701,18 +652,6 @@ nav li.contact.current-menu-item a > span {background-position:-400px -160px;}
 .subnavContact .invert{background-position: -150px -150px;}
 .subnavContact:hover .invert{background-position: -150px -200px;}
 
-
-/*分散的图片不适用于主体透明的情况*/
-/*.subnavResume .invert {background: url('images/invert-resume.png') no-repeat 0px 0px #ccc;}
-.subnavResume:hover .invert {background-color:#09F;}
-.subnavPortfolio .invert {background: url('images/invert-portfolio.png') no-repeat 0px 0px #ccc;}
-.subnavPortfolio:hover .invert {background-color:#09F;}
-.subnavBlog .invert {background: url('images/invert-blog.png') no-repeat 0px 0px #ccc;}
-.subnavBlog:hover .invert {background-color:#09F;}
-.subnavContact .invert {background: url('images/invert-contact.png') no-repeat 0px 0px #ccc;}
-.subnavContact:hover .invert {background-color:#09F;}*/
-
-
 /* #Sidebar */
 .sidebar {font-size: 12px;line-height: 150%;width: 180px; min-height: 330px; float: right;margin-right: -70px;}
 .sidebar address{text-align: justify; }
@@ -729,7 +668,6 @@ nav li.contact.current-menu-item a > span {background-position:-400px -160px;}
     padding: 10px;
     box-shadow: 1px 1px 8px #BDBDBD;
     margin: 40px 20px 0 0;
-    /*background: url('images/shadow-address.jpg') no-repeat 0px 0px;*/
 }
 
 /* #Resume*/
@@ -751,28 +689,16 @@ nav li.contact.current-menu-item a > span {background-position:-400px -160px;}
 .portfolio-items .items li{
 	background-color: rgba(255, 255, 255, 0.8);
 	border-bottom: 1px solid #ccc;
-/*	transition: transform 0.3s linear,box-shadow 0.3s linear;
-	-webkit-transition: -webkit-transform 0.3s linear,box-shadow 0.3s linear;
-	-moz-transition: -moz-transform 0.3s linear,box-shadow 0.3s linear;*/
-/*	造成Isotopy失效
-	transition: border-bottom 0.3s linear;
-	-webkit-transition: border-bottom 0.3s linear;
-	-moz-transition: border-bottom 0.3s linear;*/
 }
 .portfolio-items .items li:hover{
-/*	transform: translateY(-5px);
-	-webkit-transform: translateY(-5px);
-	-moz-transform: translateY(-5px);*/
 	border-bottom: 1px solid #09f;
-	/*box-shadow: 0 0 15px #000;*/
-	/*border-radius: 5px;*/
 }
 .portfolio-items .items li .title {font-size: 12px;background: url(images/icons.png) 0 -80px no-repeat;padding-left: 20px;margin-top: 10px;position: absolute;}
 .portfolio-items .items li .desc {color: #888;font-size: 12px; }
 .portfolio-items .items .image-wrapper{ position: relative; }
 .portfolio-items .items .work a .image-wrapper .cover {visibility:hidden;width: 100%;height: 100%;position: absolute;top:0;left: 0;opacity:0;-moz-transition:opacity .5s ease-in-out;-webkit-transition:opacity .5s ease-in-out;transition:opacity .5s ease-in-out;}
 .portfolio-items .items .work a:hover .image-wrapper .cover {visibility:visible;opacity:1; }
-.portfolio-items .items a:hover .image-wrapper .cover{background:rgba(255, 255, 255, 0.5) url('images/icons.png') no-repeat}
+.portfolio-items .items a:hover .image-wrapper .cover{background:rgba(255, 255, 255, 0.5) url(images/icons.png) no-repeat}
 .portfolio-items .items .image a:hover .image-wrapper .cover{background-position: -200px 0px}
 .portfolio-items .items .link a:hover .image-wrapper .cover {background-position: -200px -160px}
 .portfolio-items .items .video a:hover .image-wrapper .cover {background-position: -200px -320px}
@@ -814,14 +740,6 @@ nav li.contact.current-menu-item a > span {background-position:-400px -160px;}
             transition-duration: 0s;
 }
 
-/*
-.portfolio-items .items .image a:hover .image-wrapper .cover {
-    background:rgba(255, 255, 255, 0.5) url('images/hover-image.png') no-repeat center center; }
-.portfolio-items .items .video a:hover .image-wrapper .cover {
-    background:rgba(255, 255, 255, 0.5) url('images/hover-video.png') no-repeat center center; }
-.portfolio-items .items .link a:hover .image-wrapper .cover {
-    background:rgba(255, 255, 255, 0.5) url('images/hover-link.png') no-repeat center center; }
-*/
 
 /* #Blog and Search*/
 .blog article,.search article{box-shadow: 0 0 7px #BDBDBD;padding: 20px;background:rgba(248, 248, 248, 0.5);border-radius: 10px;}
@@ -833,7 +751,7 @@ nav li.contact.current-menu-item a > span {background-position:-400px -160px;}
 .blog .meta img {width: auto;margin-right: 4px;margin-bottom: -3px; }
 .blog .postVideo, .blog .postSlideshow,.search .postVideo,.search .postSlideshow{ margin-bottom: 10px; }
 .blog h1, .search h1 {line-height: 32px;}
-.blog h1 a, .blog h2 a, .blog h1, .blog h2{font-size: 21px;color: #666;text-decoration: none;padding: 5px 0;border-radius: 5px;}
+.blog h1 a, .blog h2 a, .blog h1, .blog h2,.search h1 a, .search h2 a, .search h1, .search h2{font-size: 21px;color: #666;text-decoration: none;padding: 5px 0;border-radius: 5px;}
 .blog h1 a:hover, .blog h2 a:hover,.search h1 a:hover, .search h2 a:hover {background-color:#09F;color: white }
 a.more-link,.work .title a{padding: 5px;border-radius: 5px;}
 a.more-link:hover,.work .title a:hover{background-color: #09F;color: white;}
@@ -852,9 +770,6 @@ a.more-link:hover,.work .title a:hover{background-color: #09F;color: white;}
 #wpspn-prevpost a:hover,#wpspn-nextpost a:hover{color:#09f}
 #wpspn-prevpost a{right:10px}
 #wpspn-nextpost a{left:10px}
-/*@media only screen and max-width 1100px {
-.wpspn-area,#wpspn-prevpost,#wpspn-nextpost{display:none}
-}*/
 
 
 /* Comments */
@@ -969,9 +884,6 @@ content: "";
 .alignright {float: right;margin: 0 0 20px 20px;}
 .center,.center p{text-align: center;}
 .pagetitle{
-/*	border: #09f dashed 2px;
-	border: #09f dotted 2px;
-	border-radius: 10px;*/
 	padding: 10px;
 }
 a#gotop{
@@ -1013,15 +925,15 @@ margin: 0;
 padding: 0;
 overflow: hidden;
 }
-#bg_grid{background: url(http://bcs.duapp.com/myfile/img/grid.png) repeat;}
-#bg_grid_gray{background: url(http://bcs.duapp.com/myfile/img/grid_gray.png) repeat;}
+#bg_grid{background: url(images/grid.png) repeat;}
+#bg_grid_gray{background: url(images/grid_gray.png) repeat;}
 #loader{
 top: 0;
 left: 0;
 position: fixed;
 z-index: 99;
 display: none;
-background: url(http://bcs.duapp.com/myfile/img/loading.gif) no-repeat center center rgba(255,255,255,.7);
+background: url(images/loading.gif) no-repeat center center rgba(255,255,255,.7);
 width: 100%;
 height: 100%;
 }
