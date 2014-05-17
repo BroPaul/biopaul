@@ -272,7 +272,7 @@
 			'shape' => 'default'
 		), $atts ) );
 		
-		return '<a class="button '.esc_attr($shape).' '.esc_attr($size).'" href="'.esc_attr($link).'">'.esc_attr($label).'</a>';
+		return '<a class="button '.esc_attr($shape).' '.esc_attr($size).'" href="'.esc_attr($link).'" target="_blank">'.esc_attr($label).'</a>';
 	}
 	add_shortcode('button', 'biopaul_button_shortcode');
 ?>
