@@ -108,6 +108,7 @@
 		audio.currentTime = 0;
 		playCounts++;
 		if (continous == true) isPlaying = true;
+		// repeat： 1 单曲循环，2 列表循环，3 列表播放
 		if (repeat == 1){
 			play();
 		} else {
@@ -214,12 +215,16 @@
 			$(this).addClass('enable');
 		}
 	});
-
+	// 单击右侧按钮展开/隐藏
 	$("#foldBtn").on('click',function(){
 		if ($("#bgmPlayer").hasClass('fold')){
 			$("#bgmPlayer").animate({left:'0'}).removeClass('fold')
+			$(this).attr("title","单击隐藏 | Toggle Player")
+			$(this).html('<i class="fa fa-chevron-left"></i>')
 		} else {
 			$("#bgmPlayer").animate({left:'-520px'}).addClass('fold')
+			$(this).attr("title","单击展开 | Toggle Player")
+			$(this).html('<i class="fa fa-chevron-right"></i>')
 		}
 	})
 })(jQuery);

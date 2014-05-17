@@ -35,7 +35,7 @@
 			</div>
 		</div>
 	</div>
-	<div id="foldBtn"></div>
+	<div id="foldBtn" title="单击展开 | Toggle Player"><i class="fa fa-chevron-right"></i></div>
 </div>
 <script src="http://libs.baidu.com/jqueryui/1.8.22/jquery-ui.min.js "></script>
 <!-- <script src="/lib/jquery-ui-1.8.22.min.js "></script> -->
