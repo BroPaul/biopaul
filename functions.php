@@ -1,6 +1,4 @@
 <?php
-//本文件不要轻易替换
-//上传前修改57-70，259-270行，邮件、禁用自动草稿可能不需要
 	require_once(TEMPLATEPATH.'/includes/widgets.php');
 	require_once(TEMPLATEPATH.'/includes/shortcodes.php');
 	require_once(TEMPLATEPATH.'/includes/tinymce/tinymce.php');
@@ -55,12 +53,8 @@
 	
 	function biopaul_wp_scripts() {
 		wp_enqueue_style('style', get_template_directory_uri().'/style.css');
-		// wp_enqueue_style('prettyPhoto', 'http://dn-f.qbox.me/prettyPhoto/style.css');
-		// 上传之前改回这个
-		wp_enqueue_style('prettyPhoto', '/lib/ppstyle.css');
+		wp_enqueue_style('prettyPhoto', get_template_directory_uri().'/images/pp/ppstyle.css');
 		wp_enqueue_script('jquery');
-		// wp_enqueue_script('biopaulfunctions', 'http://bcs.duapp.com/myfile/js/biopic.js?v20140204');
-		// 上传之前改回这个
 		wp_enqueue_script('biopaulfunctions', get_template_directory_uri().'/biopaul.js');
 
 		//只在single页面加载评论JS（已经包含在biopaul.js中，减少请求数）
@@ -254,54 +248,13 @@
 function cdn_js() {
     if (!is_admin()) {
         wp_deregister_script('jquery');
-        // wp_register_script('jquery',("http://libs.baidu.com/jquery/1.8.2/jquery.min.js"), false, "1.8.2", false);
-        wp_register_script('jquery',("/lib/jquery-1.8.2.min.js"), false, "1.8.2", false);
-
+        wp_register_script('jquery',("http://libs.baidu.com/jquery/1.8.2/jquery.min.js"), false, "1.8.2", false);
         wp_deregister_script('backbone');
-        // wp_register_script('backbone',("http://libs.baidu.com/backbone/0.9.2/backbone-min.js"), false, "0.9.2", false);
-        wp_register_script('backbone',("lib/backbone-0.9.2.min.js"), false, "0.9.2", false);
+        wp_register_script('backbone',("http://libs.baidu.com/backbone/0.9.2/backbone-min.js"), false, "0.9.2", false);
     }
 }
 add_action('init', 'cdn_js');
 
-//禁用自动保存草稿
-function disableAutoSave(){
-    wp_deregister_script('autosave');
-}
-add_action( 'wp_print_scripts', 'disableAutoSave' );
-
-//评论回复邮件通知（所有回复都邮件通知）
-function comment_mail_notify($comment_id) {
-$comment = get_comment($comment_id);
-$parent_id = $comment->comment_parent ? $comment->comment_parent : '';
-$spam_confirmed = $comment->comment_approved;
-if (($parent_id != '') && ($spam_confirmed != 'spam')) {
-$to = trim(get_comment($parent_id)->comment_author_email);
-$subject='亲，您在 ['.get_option("blogname").'] 的留言有新回复了~';
-$message='
-<div style="background-color:#fff; border:1px solid #666666; color:#111;-moz-border-radius:8px; -webkit-border-radius:8px; -khtml-border-radius:8px;border-radius:8px; font-size:12px; width:702px; margin:0 auto; margin-top:10px;font-family:微软雅黑, Arial;">
-	<div style="background:#666666; width:100%; height:60px; color:white;-moz-border-radius:6px 6px 0 0; -webkit-border-radius:6px 6px 0 0;-khtml-border-radius:6px 6px 0 0; border-radius:6px 6px 0 0; ">
-		<span style="height:60px; line-height:60px; margin-left:30px; font-size:12px;">您在 <a style="text-decoration:none; color:#09f;font-weight:600;" href="'.get_option("home").'">'.get_option("blogname") .'</a> 上的留言有新回复啦！
-		</span>
-	</div>
-	<div style="width:90%; margin:0 auto">
-		<p>'.trim(get_comment($parent_id)->comment_author).'，您好！</p>
-		<p>您曾在 ['.get_option("blogname").'] 的文章《'.get_the_title($comment->comment_post_ID).'》上发表如下评论：</p>
-		<p style="background-color: #EEE;border: 1px solid #DDD;padding: 10px;margin: 15px 0;">'.nl2br(get_comment($parent_id)->comment_content).'</p>
-		<p>'.trim($comment->comment_author).' 给您的回复如下：</p>
-		<p style="background-color: #EEE;border: 1px solid #DDD;padding: 10px;margin: 15px 0;">'.nl2br($comment->comment_content).'</p>
-		<p>您可以 <a style="text-decoration:none; color:#09f" href="'.htmlspecialchars(get_comment_link($parent_id)).'">点击这里</a> 查看完整的回复內容，欢迎再次光临 <a style="text-decoration:none; color:#09f" href="'.get_option("home").'">'.get_option("blogname").'</a> </p>
-		<p>（ 本邮件由博主友情发送，直接回复邮件只能勾搭到博主，不能回复到和您对话的小伙伴哦 >.< ）</p>
-	</div>
-</div>
-';
-$message = convert_smilies($message);
-$headers[] = "Content-Type: text/html;charset=".get_option('blog_charset');
-$headers[] = "From: 豆杀包(Paul Allen) <contact@bropaul.com>";
-wp_mail( $to, $subject, $message, $headers );
-}
-}
-add_action('comment_post', 'comment_mail_notify');
 
 //添加页面导航
 function bropaul_pagination( $p = 2 ) {
