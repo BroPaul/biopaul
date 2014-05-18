@@ -1,5 +1,4 @@
 <link rel="stylesheet" href="<?php echo get_template_directory_uri()?>/includes/radio/lib/style.css">
-<!-- <script src="/lib/jquery-1.8.2.min.js"></script> -->
 <div id="bgmPlayer" class="fold">
 	<div id="player">
 		<div class="cover"></div>
@@ -37,8 +36,7 @@
 	</div>
 	<div id="foldBtn" title="单击展开 | Toggle Player"><i class="fa fa-chevron-right"></i></div>
 </div>
-<script src="http://libs.baidu.com/jqueryui/1.8.22/jquery-ui.min.js "></script>
-<!-- <script src="/lib/jquery-ui-1.8.22.min.js "></script> -->
+<script src="http://libs.baidu.com/jqueryui/1.8.24/jquery-ui.min.js "></script>
 <script src="<?php echo $bgm ?>"></script>
 <script src="<?php echo get_template_directory_uri()?>/includes/radio/lib/script.js"></script> 
 <div id="bg1"></div>
