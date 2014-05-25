@@ -474,7 +474,7 @@ i.speaker{background: url(images/icons.png) no-repeat 0 -120px;padding: 0 7px;cu
 /* Footer */
 footer{clear: both; 
 	/*background: url(images/shadow-footer-960.png) no-repeat 50px 0;*/
-	padding:30px 0 10px;text-align:center;font-size: 12px;color: #666;text-shadow:1px 0px 1px #9c9c9c}
+	padding:30px 0 10px;text-align:center;font-size: 12px;color: #666;text-shadow:0 1px 0 rgba(255,255,255,0.75)}
 footer p{text-align: center;}
 
 /* #Media Queries
