@@ -656,7 +656,7 @@ nav li.contact.current-menu-item a > span {background-position:-400px -160px;}
 .sidebar {font-size: 12px;line-height: 150%;width: 180px; min-height: 330px; float: right;margin-right: -70px;}
 .sidebar address{text-align: justify; }
 .sidebar div { margin-bottom: 50px; }
-.profile .sidebar{margin:40px 40px 0 0;}
+.profile .sidebar,.author .sidebar{margin:40px 40px 0 0;}
 .blog .sidebar ul li:first-child {margin-top: 10px; }
 .blog .sidebar ul li {margin-bottom: 5px; }
 .topAddress {
