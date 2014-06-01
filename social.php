@@ -362,6 +362,14 @@
 	?>
 	<a target="_blank" rel="nofollow" href="<?php echo $mail_address; ?>" title="Mail Me"><i class="mail"></i></a>
 	<!-- 电子邮件 -->
+	<!-- RSS -->
+    <?php
+		}
+		
+		if ($rss_feed = ot_get_option('rss_feed')) {
+	?>
+	<a target="_blank" rel="nofollow" href="<?php echo $rss_feed; ?>" title="RSS"><i class="rss"></i></a>
+	<!-- RSS -->
 	<!-- URL -->
 	<?php
 		}
