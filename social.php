@@ -11,13 +11,12 @@
 <?php
 	if (function_exists('ot_get_option')) {
 ?>
-	<!-- 新浪微博 -->
 	<?php
 		if ($sina_id = ot_get_option('sina_id')){
 	?>
 	<a target="_blank" rel="nofollow" href="http://weibo.com/<?php echo $sina_id; ?>" title="新浪微博"><i class="weibo"></i></a>
 	<!-- 新浪微博 -->
-	<!-- 腾讯微博 -->
+
 	<?php
 		}
 		
@@ -25,7 +24,7 @@
 	?>
 	<a target="_blank" rel="nofollow" href="http://t.qq.com/<?php echo $tencent_id; ?>" title="腾讯微博"><i class="tencent"></i></a>
 	<!-- 腾讯微博 -->
-	<!-- 百度贴吧 -->
+
 	<?php
 		}
 		
@@ -33,7 +32,7 @@
 	?>
 	<a target="_blank" rel="nofollow" href="http://www.baidu.com/p/<?php echo $baidu_id; ?>?from=tieba" title="百度贴吧"><i class="tieba"></i></a>
 	<!-- 百度贴吧 -->
-	<!-- 人人 -->
+
 	<?php
 		}
 		
@@ -41,7 +40,7 @@
 	?>
 	<a target="_blank" rel="nofollow" href="http://www.renren.com/<?php echo $renren_id; ?>" title="人人"><i class="renren"></i></a>
 	<!-- 人人 -->
-	<!-- 开心网 -->
+
 	<?php
 		}
 		
@@ -49,7 +48,7 @@
 	?>
 	<a target="_blank" rel="nofollow" href="http://www.kaixin001.com/home/?uid=<?php echo $kaixin_id; ?>" title="开心网"><i class="kaixin"></i></a>
 	<!-- 开心网 -->
-	<!-- QQ -->
+
     <?php
 		}
 		
@@ -61,11 +60,11 @@
 				//填写了二维码
 				if($qq_qr = ot_get_option('qq_qr')){
 	?>
-					<a target="_blank" rel="nofollow" href="http://wpa.qq.com/msgrd?v=3&uin=<?php echo $qq_id; ?>&site=qq&menu=yes" title="点击和我聊天或扫描二维码加好友"><img src="http://wpa.qq.com/pa?p=1:<?php echo $qq_id; ?>:52" width="20"/><img class="qrcode" src="<?php echo $qq_qr; ?>" alt="QQ二维码"></a>
+	<a target="_blank" rel="nofollow" href="http://wpa.qq.com/msgrd?v=3&uin=<?php echo $qq_id; ?>&site=qq&menu=yes" title="点击和我聊天或扫描二维码加好友"><img src="http://wpa.qq.com/pa?p=1:<?php echo $qq_id; ?>:52" width="20"/><img class="qrcode" src="<?php echo $qq_qr; ?>" alt="QQ二维码"></a>
 	<?php
 				}else{
 	?>
-					<a target="_blank" rel="nofollow" href="http://wpa.qq.com/msgrd?v=3&uin=<?php echo $qq_id; ?>&site=qq&menu=yes" title="QQ"><img src="http://wpa.qq.com/pa?p=1:<?php echo $qq_id; ?>:52" width="20"/></a>
+	<a target="_blank" rel="nofollow" href="http://wpa.qq.com/msgrd?v=3&uin=<?php echo $qq_id; ?>&site=qq&menu=yes" title="QQ"><img src="http://wpa.qq.com/pa?p=1:<?php echo $qq_id; ?>:52" width="20"/></a>
 	<?php
 					}
 			//网址型	
@@ -73,16 +72,17 @@
 				//填写了二维码
 				if($qq_qr){
 	?>
-					<a target="_blank" rel="nofollow" href="<?php echo $qq_id; ?>" title="点击和我聊天或扫描二维码加好友"><i class="qq"></i><img class="qrcode" src="<?php echo $qq_qr; ?>" alt="QQ二维码"></a>
+	<a target="_blank" rel="nofollow" href="<?php echo $qq_id; ?>" title="点击和我聊天或扫描二维码加好友"><i class="qq"></i><img class="qrcode" src="<?php echo $qq_qr; ?>" alt="QQ二维码"></a>
 	<?php
 				}else{
 	?>
-					<a target="_blank" rel="nofollow" href="<?php echo $qq_id; ?>" title="QQ"><i class="qq"></i></a>
+	<a target="_blank" rel="nofollow" href="<?php echo $qq_id; ?>" title="QQ"><i class="qq"></i></a>
 	<?php
-				}			
+				}
+			}			
 	?>	
 	<!-- QQ -->
-	<!-- Twitter -->
+	
     <?php
 		}
 		
@@ -90,15 +90,15 @@
 	?>
 	<a target="_blank" rel="nofollow" href="https://twitter.com/<?php echo $twitter_id; ?>" title="Twitter"><i class="twitter"></i></a>
 	<!-- Twitter -->	
-	<!-- Facebook -->
+
     <?php
 		}
-	}
+
 		if ($facebook_id = ot_get_option('facebook_id')) {
 	?>
 	<a target="_blank" rel="nofollow" href="https://www.facebook.com/<?php echo $facebook_id; ?>" title="Facebook"><i class="facebook"></i></a>
 	<!-- Facebook -->
-	<!-- Google+ -->
+	
 	<?php
 		}
 		
@@ -106,7 +106,7 @@
 	?>
 	<a target="_blank" rel="nofollow" href="https://plus.google.com/<?php echo $gplus_id; ?>" title="Google Plus"><i class="gplus"></i></a>
 	<!-- Google+ -->
-	<!-- Skype -->
+	
 	<?php
 		}
 		
@@ -114,7 +114,7 @@
 	?>
 	<a rel="nofollow" href="skype:<?php echo $skype_id; ?>?chat" title="Skype"><img src="http://mystatus.skype.com/mediumicon/<?php echo $skype_id; ?>" width="20" /></a>
 	<!-- Skype -->
-	<!-- 优酷 -->
+	
 	<?php
 		}
 		
@@ -122,7 +122,7 @@
 	?>
 	<a target="_blank" rel="nofollow" href="http://i.youku.com/<?php echo $youku_id; ?>" title="优酷"><i class="youku"></i></a>
 	<!-- 优酷 -->
-	<!-- 土豆 -->
+	
 	<?php
 		}
 		
@@ -130,7 +130,7 @@
 	?>
 	<a target="_blank" rel="nofollow" href="http://www.tudou.com/home/<?php echo $tudou_id; ?>" title="土豆"><i class="tudou"></i></a>
 	<!-- 土豆 -->
-	<!-- 哔哩哔哩 -->
+	
 	<?php
 		}
 		
@@ -138,7 +138,7 @@
 	?>
 	<a target="_blank" rel="nofollow" href="http://space.bilibili.tv/<?php echo $bilibili_id; ?>" title="哔哩哔哩"><i class="bilibili"></i></a>
 	<!-- 哔哩哔哩 -->
-	<!-- 虾米 -->
+	
 	<?php
 		}
 		
@@ -146,7 +146,7 @@
 	?>
 	<a target="_blank" rel="nofollow" href="http://www.xiami.com/u/<?php echo $xiami_id; ?>" title="虾米"><i class="xiami"></i></a>
 	<!-- 虾米 -->
-	<!-- SongTaste -->
+	
 	<?php
 		}
 		
@@ -154,7 +154,7 @@
 	?>
 	<a target="_blank" rel="nofollow" href="http://www.songtaste.com/user/<?php echo $songtaste_id; ?>" title="SongTaste"><i class="songtaste"></i></a>
 	<!-- SongTaste -->
-	<!-- 花瓣 -->
+	
 	<?php
 		}
 		
@@ -162,7 +162,7 @@
 	?>
 	<a target="_blank" rel="nofollow" href="http://huaban.com/<?php echo $huaban_id; ?>" title="花瓣"><i class="huaban"></i></a>
 	<!-- 花瓣 -->
-	<!-- Youtube -->
+	
 	<?php
 		}
 		
@@ -170,7 +170,7 @@
 	?>
 	<a target="_blank" rel="nofollow" href="https://youtube.com/user/<?php echo $youtube_id; ?>" title="Youtube"><i class="youtube"></i></a>
 	<!-- Youtube -->
-	<!-- Vimeo -->
+	
 	<?php
 		}
 		
@@ -178,7 +178,7 @@
 	?>
 	<a target="_blank" rel="nofollow" href="http://vimeo.com/<?php echo $vimeo_id; ?>" title="Vimeo"><i class="vimeo"></i></a>
 	<!-- Vimeo -->
-	<!-- SoundCloud -->
+	
 	<?php
 		}
 		
@@ -186,7 +186,7 @@
 	?>
 	<a target="_blank" rel="nofollow" href="https://soundcloud.com/<?php echo $soundcloud_id; ?>" title="SoundCloud"><i class="soundcloud"></i></a>
 	<!-- SoundCloud -->
-	<!-- Flickr -->
+	
 	<?php
 		}
 		
@@ -194,7 +194,7 @@
 	?>
 	<a target="_blank" rel="nofollow" href="https://www.flickr.com/photos/<?php echo $flickr_id; ?>" title="Flickr"><i class="flickr"></i></a>
 	<!-- Flickr -->
-	<!-- Instagram -->
+	
 	<?php
 		}
 		
@@ -202,7 +202,7 @@
 	?>
 	<a target="_blank" rel="nofollow" href="http://instagram.com/<?php echo $instagram_id; ?>" title="Instagram"><i class="instagram"></i></a>
 	<!-- Instagram -->
-	<!-- 500px -->
+	
 	<?php
 		}
 		
@@ -210,7 +210,7 @@
 	?>
 	<a target="_blank" rel="nofollow" href="http://500px.com/<?php echo $f500px_id; ?>" title="500px"><i class="f500px"></i></a>
 	<!-- 500px -->
-	<!-- Pinterest -->
+	
 	<?php
 		}
 		
@@ -218,7 +218,7 @@
 	?>
 	<a target="_blank" rel="nofollow" href="http://www.pinterest.com/<?php echo $pinterest_id; ?>" title="Pinterest"><i class="pinterest"></i></a>
 	<!-- Pinterest -->
-	<!-- 知乎 -->
+	
 	<?php
 		}
 		
@@ -226,7 +226,7 @@
 	?>
 	<a target="_blank" rel="nofollow" href="http://www.zhihu.com/people/<?php echo $zhihu_id; ?>" title="知乎"><i class="zhihu"></i></a>
 	<!-- 知乎 -->
-	<!-- 果壳 -->
+	
 	<?php
 		}
 		
@@ -234,7 +234,7 @@
 	?>
 	<a target="_blank" rel="nofollow" href="http://www.guokr.com/i/<?php echo $guokr_id; ?>" title="果壳"><i class="guokr"></i></a>
 	<!-- 果壳 -->
-	<!-- 豆瓣 -->
+	
 	<?php
 		}
 		
@@ -242,23 +242,23 @@
 	?>
 	<a target="_blank" rel="nofollow" href="http://www.douban.com/people/<?php echo $douban_id; ?>" title="豆瓣"><i class="douban"></i></a>
 	<!-- 豆瓣 -->
-	<!-- 站酷 -->
+	
 	<?php
 		}
 		
 		if ($zcool_id = ot_get_option('zcool_id')){
 			if (is_numeric($zcool_id)) {
 	?>
-				<a target="_blank" rel="nofollow" href="http://www.zcool.com.cn/u/<?php echo $zcool_id; ?>" title="站酷"><i class="zcool"></i></a>
+	<a target="_blank" rel="nofollow" href="http://www.zcool.com.cn/u/<?php echo $zcool_id; ?>" title="站酷"><i class="zcool"></i></a>
 	<?php  
 			}else{
 	?>
-				<a target="_blank" rel="nofollow" href="<?php echo $zcool_id; ?>" title="站酷"><i class="zcool"></i></a>
+	<a target="_blank" rel="nofollow" href="<?php echo $zcool_id; ?>" title="站酷"><i class="zcool"></i></a>
 	<?php
 			}
 	?>
 	<!-- 站酷 -->
-	<!-- 译言 -->
+	
 	<?php
 		}
 		
@@ -266,7 +266,7 @@
 	?>
 	<a target="_blank" rel="nofollow" href="http://user.yeeyan.org/u/<?php echo $yiyan_id; ?>" title="译言"><i class="yiyan"></i></a>
 	<!-- 译言 -->
-	<!-- SegmentFault -->
+	
 	<?php
 		}
 		
@@ -274,7 +274,7 @@
 	?>
 	<a target="_blank" rel="nofollow" href="http://segmentfault.com/u/<?php echo $segmentfault_id; ?>" title="SegmentFault"><i class="segmentfault"></i></a>
 	<!-- SegmentFault -->
-	<!-- Quora -->
+	
 	<?php
 		}
 		
@@ -282,7 +282,7 @@
 	?>
 	<a target="_blank" rel="nofollow" href="https://www.quora.com/<?php echo $quora_id; ?>" title="Quora"><i class="quora"></i></a>
 	<!-- Quora -->
-	<!-- Dropbox -->
+	
 	<?php
 		}
 		
@@ -290,7 +290,7 @@
 	?>
 	<a target="_blank" rel="nofollow" href="<?php echo $dropbox_id; ?>" title="Dropbox邀请链接 | DB Referral Link"><i class="dropbox"></i></a>
 	<!-- Dropbox -->
-	<!-- Linkedin -->
+	
 	<?php
 		}
 		
@@ -298,7 +298,7 @@
 	?>
 	<a target="_blank" rel="nofollow" href="<?php echo $linkedin_id; ?>" title="Linkedin"><i class="linkedin"></i></a>
 	<!-- Linkedin -->
-	<!-- Dribbble -->
+	
 	<?php
 		}
 		
@@ -306,7 +306,7 @@
 	?>
 	<a target="_blank" rel="nofollow" href="http://dribbble.com/<?php echo $dribbble_id; ?>" title="Dribbble"><i class="dribbble"></i></a>
 	<!-- Dribbble -->
-	<!-- Github -->
+	
 	<?php
 		}
 		
@@ -314,7 +314,7 @@
 	?>
 	<a target="_blank" rel="nofollow" href="https://github.com/<?php echo $github_id; ?>" title="Github"><i class="github"></i></a>
 	<!-- Github -->
-	<!-- StackExchange -->
+	
 	<?php
 		}
 		
@@ -322,7 +322,7 @@
 	?>
 	<a target="_blank" rel="nofollow" href="http://user.yeeyan.org/u/<?php echo $stackexchange_id; ?>" title="StackExchange"><i class="stackexchange"></i></a>
 	<!-- StackExchange -->
-	<!-- 微信 -->
+	
 	<?php
 		}
 		
@@ -330,7 +330,7 @@
 	?>
 	<a href="javascript:;" title="微信扫一扫，马上加好友"><i class="weixin"><img class="qrcode" src="<?php echo $wechat_qr; ?>" alt="微信二维码 | WeChat QR Code"></i></a>
 	<!-- 微信 -->
-	<!-- 易信 -->
+	
 	<?php
 		}
 		
@@ -338,7 +338,7 @@
 	?>
 	<a href="javascript:;" title="扫码加好友"><i class="yixin"><img class="qrcode" src="<?php echo $yixin_qr; ?>" alt="易信二维码 | Yixin QR Code"></i></a>
 	<!-- 易信 -->
-	<!-- Line -->
+	
 	<?php
 		}
 		
@@ -346,7 +346,7 @@
 	?>
 	<a href="javascript:;" title="扫码加好友"><i class="line"><img class="qrcode" src="<?php echo $line_qr; ?>" alt="连我二维码 | Line QR Code"></i></a>
 	<!-- Line -->
-	<!-- Whatsapp -->
+	
 	<?php
 		}
 		
@@ -354,15 +354,23 @@
 	?>
 	<a href="javascript:;" title="扫码加好友"><i class="whatsapp"><img class="qrcode" src="<?php echo $whatsapp_qr; ?>" alt="Whatsapp二维码 | Whatsapp QR Code"></i></a>
 	<!-- Whatsapp -->
-	<!-- 电子邮件 -->
+	
     <?php
 		}
 		
 		if ($mail_address = ot_get_option('mail_address')) {
+			if (!strpos($mail_address, "@")) {
 	?>
 	<a target="_blank" rel="nofollow" href="<?php echo $mail_address; ?>" title="Mail Me"><i class="mail"></i></a>
+	<?php
+			}else{
+	?>
+	<a href="mailto:<?php echo antispambot($mail_address); ?>" title="Mail Me"><i class="mail"></i></a>
+	<?php
+			}
+	?>
 	<!-- 电子邮件 -->
-	<!-- RSS -->
+	
     <?php
 		}
 		
@@ -370,7 +378,7 @@
 	?>
 	<a target="_blank" rel="nofollow" href="<?php echo $rss_feed; ?>" title="RSS"><i class="rss"></i></a>
 	<!-- RSS -->
-	<!-- URL -->
+	
 	<?php
 		}
 
@@ -380,9 +388,6 @@
 	<!-- URL -->
 	<?php
 		}
-	?>
-
-<?php
 	}
 ?>
 </div>
