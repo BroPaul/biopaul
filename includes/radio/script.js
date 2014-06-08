@@ -13,7 +13,6 @@
 	var play = function(){
 		audio.play();
 		$('.playback').addClass('active');
-		$('.fa-play').removeClass('fa-play').addClass('fa-pause');
 		timeout = setInterval(updateProgress, 500);
 		isPlaying = true;
 	}
@@ -21,7 +20,6 @@
 	var pause = function(){
 		audio.pause();
 		$('.playback').removeClass('active');
-		$('.fa-pause').removeClass('fa-pause').addClass('fa-play');
 		clearInterval(updateProgress);
 		isPlaying = false;
 	}
@@ -70,10 +68,8 @@
 		if ($(this).hasClass('enable')){
 			setVolume($(this).data('volume'));
 			$(this).removeClass('enable');
-			$('.fa-volume-off').removeClass('fa-volume-off').addClass('fa-volume-up');
 		} else {
 			$(this).data('volume', audio.volume).addClass('enable');
-			$('.fa-volume-up').removeClass('fa-volume-up').addClass('fa-volume-off');
 			setVolume(0);
 		}
 	});
@@ -153,7 +149,7 @@
 		}else{
 			$('#bg1,#bg2').animate({ opacity: 0 }, { duration: 1500 }).removeClass('on');
 		};
-		$('.cover').html('<img src="'+item.cover+'" alt="'+item.album+'">');
+		$('.cover').html('<img src="'+item.cover+'" alt="'+item.album+'"><i class="light"></i>');
 		$('.tag').html('<strong>'+item.title+'</strong><span class="artist">'+item.artist+'</span><span class="album">'+item.album+'</span>');
 		audio = newaudio[0];
 		audio.volume = $('.mute').hasClass('enable') ? 0 : volume;
@@ -219,12 +215,10 @@
 	$("#foldBtn").on('click',function(){
 		if ($("#playerWrapper").hasClass('fold')){
 			$("#playerWrapper").animate({left:'0'}).removeClass('fold');
-			$(this).attr("title","单击隐藏 | Toggle Player");
-			$(this).html('<i class="fa fa-chevron-left"></i>');
+			$(this).attr("title","单击收起");
 		} else {
 			$("#playerWrapper").animate({left:'-330px'}).addClass('fold');
-			$(this).attr("title","单击展开 | Toggle Player");
-			$(this).html('<i class="fa fa-chevron-right"></i>');
+			$(this).attr("title","单击展开");
 		}
 	})
 })(jQuery);

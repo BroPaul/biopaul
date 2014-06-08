@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="<?php echo get_template_directory_uri()?>/includes/radio/lib/style.css">
+<link rel="stylesheet" href="<?php echo get_template_directory_uri()?>/includes/radio/style.css">
 <div id="bgmPlayer">
 	<div class="cover"></div>
 	<div id="playerWrapper" class="fold">
@@ -11,12 +11,12 @@
 				</div>
 				<div class="control">
 					<div class="left">
-						<div class="rewind icon"><i class="fa fa-backward"></i></div>
-						<div class="playback icon playing"><i class="fa fa-play"></i></div>
-						<div class="fastforward icon"><i class="fa fa-forward"></i></div>
+						<div class="rewind icon"></div>
+						<div class="playback icon playing"></div>
+						<div class="fastforward icon"></div>
 					</div>
 					<div class="volume right">
-						<div class="mute icon left"><i class="fa fa-volume-up"></i></div>
+						<div class="mute icon left"></div>
 						<div class="slider left">
 							<div class="pace"></div>
 						</div>
@@ -35,11 +35,11 @@
 				</div>
 			</div>
 		</div>
-		<div id="foldBtn" title="单击展开 | Toggle Player"><i class="fa fa-chevron-right"></i></div>
+		<div id="foldBtn" title="单击展开"><i></i></div>
 	</div>
 </div>
 <script src="http://libs.baidu.com/jqueryui/1.8.24/jquery-ui.min.js "></script>
 <script src="<?php echo $bgm ?>"></script>
-<script src="<?php echo get_template_directory_uri()?>/includes/radio/lib/script.js"></script> 
+<script src="<?php echo get_template_directory_uri()?>/includes/radio/script.js"></script>
 <div id="bg1"></div>
 <div id="bg2"></div>
