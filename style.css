@@ -4,7 +4,7 @@
 	Description: A responsive wordpress theme adapted from Biopic.
 	Author: Paul Allen
 	Author URI: http://www.bropaul.com/
-	Version: 2014.6.1
+	Version: 2014.6.10
 */
 
 /*Base*/
@@ -36,7 +36,7 @@ h6 { font-size: 14px; line-height: 21px; }
 .sidebar h6{background: url(images/icons.png) no-repeat 0 -100px;padding-left:20px;line-height:18px;}
 .single-biopic_work h4{font-size: 24px;text-align: center;padding-bottom: 20px;}
 table {border-collapse: collapse;border-spacing: 0; float: none;}
-p { margin: 0 0 10px 0;text-align: justify;}
+p {margin: 0 0 10px 0}
 p img { margin: 0; }
 p.lead { font-size: 21px; line-height: 27px; color: #777;  }
 em { font-style: italic}
@@ -76,8 +76,8 @@ blockquote {
 	margin: 15px 20px;
 	border-left: 4px solid #999;
 	border-radius: 5px;
-	font-family: "Lucida Calligraphy",'Microsoft Yahei';
-	font-size: 13px;
+	font-family: "Candara",'Microsoft Yahei';
+	font-size: 14px;
 	word-wrap: break-word;
 }
 blockquote cite:before { content: "\2014 \0020"; }
@@ -756,8 +756,7 @@ nav li.contact.current-menu-item a > span {background-position:-400px -160px;}
 .blog h1 a:hover, .blog h2 a:hover,.search h1 a:hover, .search h2 a:hover {background-color:#09F;color: white }
 a.more-link,.work .title a{padding: 5px;border-radius: 5px;}
 a.more-link:hover,.work .title a:hover{background-color: #09F;color: white;}
-.blog section p {line-height: 150%;text-align:justify;}
-/*.blog section p {word-break: break-all;}*/
+/*.blog section p {word-break: break-all;line-height: 150%;text-align:justify;}*/
 
 /*pagination*/
 .pagination span.page-count,.pagination a.next,.pagination a.prev { width:60px;}   

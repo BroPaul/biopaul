@@ -50,7 +50,7 @@
 	            	if (is_user_logged_in()) {
 				?>
 				<div class="info-col">
-	            	<p><?php printf('您将以 %1$s 的身份评论 %2$s（换个帐号）%3$s', '<a href="'.site_url().'/wp-admin/profile.php">'.$user_identity.'</a>', '<a href="'.(function_exists('wp_logout_url') ? wp_logout_url(get_permalink()) : site_url().'/wp-login.php?action=logout').'">', '</a>') ?></p>
+	            	<p><?php printf('您将以 %1$s 的身份评论 %2$s[登出]%3$s', '<a href="'.site_url().'/wp-admin/profile.php">'.$user_identity.'</a>', '<a href="'.(function_exists('wp_logout_url') ? wp_logout_url(get_permalink()) : site_url().'/wp-login.php?action=logout').'">', '</a>') ?></p>
 	            </div>
 	            <?php
 					}else{
@@ -64,7 +64,7 @@
 					}
 				?>
 	            	<div class="comment-col">
-	                	<textarea placeholder="君子动口也动手，留下脚印你再走"  name="comment" id="comment" value=""></textarea>
+	                	<textarea placeholder="留个脚印？"  name="comment" id="comment" value=""></textarea>
 	                </div>
 	                <br class="clear">
 	                <div class="btn-col">
