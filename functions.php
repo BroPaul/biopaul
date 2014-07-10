@@ -5,7 +5,7 @@
 	require_once(TEMPLATEPATH.'/includes/shortcodes.php');
 	require_once(TEMPLATEPATH.'/includes/tinymce/tinymce.php');
 	add_filter('ot_theme_mode', '__return_true');
-	add_filter( 'ot_show_pages', '__return_false' );
+	add_filter('ot_show_pages', '__return_false');
  
 	// 注册导航菜单
 	function register_biopaul_menus() {
@@ -493,6 +493,72 @@ function ajax_comment_err($msg) {
 	header('Content-Type: text/plain');
 	echo $msg;
 	exit;
+}
+
+//让WordPress支持用户名或邮箱登录
+function dr_email_login_authenticate( $user, $username, $password ) {
+	if ( is_a( $user, 'WP_User' ) )
+		return $user;
+ 
+	if ( !empty( $username ) ) {
+		$username = str_replace( '&', '&', stripslashes( $username ) );
+		$user = get_user_by( 'email', $username );
+		if ( isset( $user, $user->user_login, $user->user_status ) && 0 == (int) $user->user_status )
+			$username = $user->user_login;
+	}
+ 
+	return wp_authenticate_username_password( null, $username, $password );
+}
+remove_filter( 'authenticate', 'wp_authenticate_username_password', 20, 3 );
+add_filter( 'authenticate', 'dr_email_login_authenticate', 20, 3 );
+//替换“用户名”为“用户名 / 邮箱”
+function username_or_email_login() {
+	if ( 'wp-login.php' != basename( $_SERVER['SCRIPT_NAME'] ) )
+		return;
+?>
+<script type="text/javascript">
+if (document.getElementById('loginform') )
+	document.getElementById('loginform').childNodes[1].childNodes[1].childNodes[0].nodeValue = '用户名 / 邮箱';
+if (document.getElementById('login_error') )
+	document.getElementById('login_error').innerHTML = document.getElementById('login_error').innerHTML.replace('用户名', '用户名 / 邮箱');
+</script>
+<?php
+}
+add_action( 'login_form', 'username_or_email_login' );
+
+//自定义后台登录界面
+function custom_headertitle () {
+	return get_bloginfo('name');
+}
+add_filter('login_headertitle','custom_headertitle');
+function custom_loginlogo_url() {
+	return home_url();
+}
+add_filter( 'login_headerurl', 'custom_loginlogo_url' );
+	// 手机用户不加载背景图
+if (!preg_match('/Mobile/', $_SERVER['HTTP_USER_AGENT'])) {
+	function custom_login() {
+?>
+<style>html{overflow:hidden}body{background:none !important;overflow:hidden;font:14px/1.4 "Microsoft Yahei"}#login{width:280px}#login h1 a{font-weight:bold;text-indent:0;background:none !important;font-size:36px;width:auto}#login form{padding:10px 0;background:#dde5ed;background:-moz-linear-gradient(top,rgba(221,229,237,1) 0,rgba(242,243,244,1) 100%);background:-webkit-gradient(linear,left top,left bottom,color-stop(0,rgba(221,229,237,1)),color-stop(100%,rgba(242,243,244,1)));background:-webkit-linear-gradient(top,rgba(221,229,237,1) 0,rgba(242,243,244,1) 100%);background:-ms-linear-gradient(top,rgba(221,229,237,1) 0,rgba(242,243,244,1) 100%);border-radius:8px;-webkit-box-shadow:inset 0 1px 3px rgba(0,0,0,0.36),0 1px 0 rgba(255,255,255,0.15);-moz-box-shadow:inset 0 1px 3px rgba(0,0,0,0.36),0 1px 0 rgba(255,255,255,0.15);box-shadow:inset 0 1px 3px rgba(0,0,0,0.36),0 1px 0 rgba(255,255,255,0.15)}#login form p,#login form p.submit{padding:0 15px}#login a{text-shadow:1px 1px 0 #000;color:#FFF !important}#login_error a{color:#000 !important;text-shadow:1px 1px 0 #FFF}#login label{color:#333;text-shadow:1px 1px 2px #FFF}#login form .input{border-radius:4px;padding:5px 10px;font-weight:bold;font-size:14px}#login .form-send .bot{width:100%;border-bottom:1px solid #ccc}#login .submit .button{width:100%;margin:10px auto}#footer{position:absolute;bottom:10px;height:30px;padding:0 20px;color:#FFF;text-shadow:1px 1px 0 #000}#footer a{color:#FFF}#loading{position:absolute;top:0;left:0;width:100%;height:100%;z-index:99;overflow:hidden;background:#000}#loading img{position:absolute;top:50%;left:50%;width:58px;height:10px;margin:-5px 0 0 -29px}#loginbg{position:absolute;top:0;left:0;width:100%;height:100%;z-index:99;overflow:hidden}#loginbg img{opacity:0}#backtoblog{display:none}</style>
+<script src="http://apps.bdimg.com/libs/jquery/1.8.2/jquery.min.js"></script>
+<?php
+	}
+	add_action('login_head', 'custom_login');
+	function custom_html() {
+?>
+<div id="footer">
+	<p>Modifier: <a href="http://www.bropaul.com/" target="_blank">Paul Allen</a> | Inspired by <a href="http://webjyh.com" target="_blank">M.J</a></p>
+</div>
+<div id="loading">
+	<img src="data:image/gif;base64,R0lGODlhOgAKAKIFAERERIWFhWVlZdbW1qampv///wAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQFCgAFACwAAAAAOgAKAAADawi6XCUwSheqvY7ozd34YMiMgCOdAnWtGed6YUw2Dxqpq9W6GxyDs4XJBsHlAjsewfcbBBVDojGX5DF/z1JNWjjqCspeoQl8Rm1TFji8HJOd5i2660Wuw1dZnFike6svbmRZZyhpGHdKeSEJACH5BAUKAAUALAAAAAA6AAoAAANrOLpcBTBKJ6q9LujNHflgyIyDI50Ada0Z53phTDYPGqmr1bobHIOzhckGweUEO17A9yMEFUOiMZfkMX/PUk1aOOoKyl6hCXxGbVMWOLwck53mLbrrRa7DV1mcWKR7qy9uZFlnKGkYd0p5IQkAIfkEBQoABQAsAAAAADoACgAAA2tIulw1MEoHqr1O6M1d+GDIjIQjnQN1rRnnemFMNg8aqavVuhscg7OFyQbB5QA7nsD3CwQVQ6Ixl+Qxf89STVo46grKXqEJfEZtUxY4vByTneYtuutFrsNXWZxYpHurL25kWWcoaRh3SnkhCQAh+QQFCgAFACwAAAAAOgAKAAADaxi6XEUwSjeqvQ7ozZ34YMiMgSOdBHWtGed6YUw2Dxqpq9W6GxyDs4XJBsHlBjsewPcTBBVDojGX5DF/z1JNWjjqCspeoQl8Rm1TFji8HJOd5i2660Wuw1dZnFike6svbmRZZyhpGHdKeSEJACH5BAUKAAUALAAAAAA6AAoAAANrKLpcFTBKR6q9bujNHfhgyIyCI50Bda0Z53phTDYPGqmr1bobHIOzhckGweUIO97A9wMEFUOiMZfkMX/PUk1aOOoKyl6hCXxGbVMWOLwck53mLbrrRa7DV1mcWKR7qy9uZFlnKGkYd0p5IQkAOw==">
+</div>
+<div id="loginbg"><img/></div>
+<script>
+	function resizeImage(id){$('#'+id).css({'position':'absolute','top':'0px','left':'0px','width':'100%','height':'100%','z-index':-1,'overflow':'hidden'});var w=$(window).width(),h=$(window).height(),o=$('#'+id).children('img'),iW=o.width(),iH=o.height();o.css({'display':'block','opacity':0});if(w>h){if(iW>iH){o.css({'width':w});o.css({'height':Math.round((iH/iW)*w)});var newIh=Math.round((iH/iW)*w);if(newIh<h){o.css({'height':h});o.css({'width':Math.round((iW/iH)*h)})}}else{o.css({'height':h});o.css({'width':Math.round((iW/iH)*h)})}}else{o.css({'height':h});o.css({'width':Math.round((iW/iH)*h)})}var newIW=o.width(),newIH=o.height();if(newIW>w){var l=(newIW-w)/2;o.css('margin-left',-l)}else{o.css('margin-left',0)}if(newIH>h){var t=(newIH-h)/2;o.css('margin-top',-t)}else{o.css('margin-top',0)}o.animate({'opacity':'1'})};$('#loginbg img').attr('src', "<?php bloginfo('template_directory')?>/images/login_bg.jpg").load(function(){resizeImage('loginbg');$(window).bind("resize", function() {resizeImage('loginbg');});});$('#loading').fadeOut();
+</script>
+<?php
+	}
+	add_action('login_footer', 'custom_html');
 }
 ?>
 <?php 

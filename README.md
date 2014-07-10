@@ -19,7 +19,8 @@ Feel free to download, use, test, or modify it. But DO NOT use it for commercial
  7. 404页面强制使用公益404，优化显示
  8. （基本上）完全汉化了（毕竟只给中国人用）
  9. 其他样式微调
- 10. 美化后台登录界面（待完成） 
+ 10. 美化后台登录界面
+ 11. 支持邮箱登录后台 
 
 ###**V2.0** 仍没解决的问题如下：
 
