@@ -12,14 +12,14 @@
 
 	var play = function(){
 		audio.play();
-		$('.playback').addClass('active');
+		$('#radio4wp .playback').addClass('active');
 		timeout = setInterval(updateProgress, 500);
 		isPlaying = true;
 	}
 
 	var pause = function(){
 		audio.pause();
-		$('.playback').removeClass('active');
+		$('#radio4wp .playback').removeClass('active');
 		clearInterval(updateProgress);
 		isPlaying = false;
 	}
@@ -29,16 +29,16 @@
 		var currentSec = parseInt(value%60) < 10 ? '0' + parseInt(value%60) : parseInt(value%60),
 			ratio = value / audio.duration * 100;
 
-		$('.timer').html(parseInt(value/60)+':'+currentSec);
-		$('.progress .pace').css('width', ratio + '%');
-		$('.progress .slider a').css('left', ratio + '%');
+		$('#radio4wp .timer').html(parseInt(value/60)+':'+currentSec);
+		$('#radio4wp .progress .pace').css('width', ratio + '%');
+		$('#radio4wp .progress .slider a').css('left', ratio + '%');
 	}
 
 	var updateProgress = function(){
 		setProgress(audio.currentTime);
 	}
 
-	$('.progress .slider').slider({step: 0.1, slide: function(event, ui){
+	$('#radio4wp .progress .slider').slider({step: 0.1, slide: function(event, ui){
 		$(this).addClass('enable');
 		setProgress(audio.duration * ui.value / 100);
 		clearInterval(timeout);
@@ -51,20 +51,20 @@
 	// 音量
 	var setVolume = function(value){
 		audio.volume = localStorage.volume = value;
-		$('.volume .pace').css('width', value * 100 + '%');
-		$('.volume .slider a').css('left', value * 100 + '%');
+		$('#radio4wp .volume .pace').css('width', value * 100 + '%');
+		$('#radio4wp .volume .slider a').css('left', value * 100 + '%');
 	}
 
 	var volume = localStorage.volume || 0.5;
-	$('.volume .slider').slider({max: 1, min: 0, step: 0.01, value: volume, slide: function(event, ui){
+	$('#radio4wp .volume .slider').slider({max: 1, min: 0, step: 0.01, value: volume, slide: function(event, ui){
 		setVolume(ui.value);
 		$(this).addClass('enable');
-		$('.mute').removeClass('enable');
+		$('#radio4wp .mute').removeClass('enable');
 	}, stop: function(){
 		$(this).removeClass('enable');
-	}}).children('.pace').css('width', volume * 100 + '%');
+	}}).children('#radio4wp .pace').css('width', volume * 100 + '%');
 
-	$('.mute').click(function(){
+	$('#radio4wp .mute').click(function(){
 		if ($(this).hasClass('enable')){
 			setVolume($(this).data('volume'));
 			$(this).removeClass('enable');
@@ -122,7 +122,7 @@
 
 	var beforeLoad = function(){
 		var endVal = this.seekable && this.seekable.length ? this.seekable.end(0) : 0;
-		$('.progress .loaded').css('width', (100 / (this.duration || 1) * endVal) +'%');
+		$('#radio4wp .progress .loaded').css('width', (100 / (this.duration || 1) * endVal) +'%');
 	}
 
 	// 音乐加载完毕
@@ -138,21 +138,21 @@
 			var _image = new Image();
 			_image.src= item.bgimg;
 			$(_image).load(function () {
-				if ($('#bg1').hasClass('on')) {
-					$('#bg2').css('background-image', 'url('+item.bgimg+')').animate({ opacity: 1 }, { duration: 1000 }).addClass('on');
-					$('#bg1').animate({ opacity: 0 }, { duration: 2000 }).removeClass('on');
+				if ($('#r4wpbg1').hasClass('on')) {
+					$('#r4wpbg2').css('background-image', 'url('+item.bgimg+')').animate({ opacity: 1 }, { duration: 1000 }).addClass('on');
+					$('#r4wpbg1').animate({ opacity: 0 }, { duration: 2000 }).removeClass('on');
 				}else{
-					$('#bg1').css('background-image', 'url('+item.bgimg+')').animate({ opacity: 1 }, { duration: 1000 }).addClass('on');
-					$('#bg2').animate({ opacity: 0 }, { duration: 2000 }).removeClass('on');
+					$('#r4wpbg1').css('background-image', 'url('+item.bgimg+')').animate({ opacity: 1 }, { duration: 1000 }).addClass('on');
+					$('#r4wpbg2').animate({ opacity: 0 }, { duration: 2000 }).removeClass('on');
 				};
 			  });
 		}else{
-			$('#bg1,#bg2').animate({ opacity: 0 }, { duration: 1500 }).removeClass('on');
+			$('#r4wpbg1,#r4wpbg2').animate({ opacity: 0 }, { duration: 1500 }).removeClass('on');
 		};
-		$('.cover').html('<img src="'+item.cover+'" alt="'+item.album+'"><i class="light"></i>');
-		$('.tag').html('<strong>'+item.title+'</strong><span class="artist">'+item.artist+'</span><span class="album">'+item.album+'</span>');
+		$('#radio4wp .cover').html('<img src="'+item.cover+'" alt="'+item.album+'"><i class="light"></i>');
+		$('#radio4wp .tag').html('<strong>'+item.title+'</strong><span class="artist">'+item.artist+'</span><span class="album">'+item.album+'</span>');
 		audio = newaudio[0];
-		audio.volume = $('.mute').hasClass('enable') ? 0 : volume;
+		audio.volume = $('#radio4wp .mute').hasClass('enable') ? 0 : volume;
 		audio.addEventListener('progress', beforeLoad, false);
 		audio.addEventListener('durationchange', beforeLoad, false);
 		audio.addEventListener('canplay', afterLoad, false);
@@ -160,21 +160,21 @@
 	}
 
 	loadMusic(currentTrack);
-	$('.playback').on('click', function(){
+	$('#radio4wp .playback').on('click', function(){
 		if ($(this).hasClass('active')){
 			pause();
 		} else {
 			play();
 		}
 	});
-	$('.rewind').on('click', function(){
+	$('#radio4wp .rewind').on('click', function(){
 		if (shuffle === 'true'){
 			shufflePlay();
 		} else {
 			switchTrack(--currentTrack);
 		}
 	});
-	$('.fastforward').on('click', function(){
+	$('#radio4wp .fastforward').on('click', function(){
 		if (shuffle === 'true'){
 			shufflePlay();
 		} else {
@@ -182,14 +182,14 @@
 		}
 	});
 
-	if (shuffle === 'true') $('.shuffle').addClass('enable');
+	if (shuffle === 'true') $('#radio4wp .shuffle').addClass('enable');
 	if (repeat == 1){
-		$('.repeat').addClass('once');
+		$('#radio4wp .repeat').addClass('once');
 	} else if (repeat == 2){
-		$('.repeat').addClass('all');
+		$('#radio4wp .repeat').addClass('all');
 	}
 
-	$('.repeat').on('click', function(){
+	$('#radio4wp .repeat').on('click', function(){
 		if ($(this).hasClass('once')){
 			repeat = localStorage.repeat = 2;
 			$(this).removeClass('once').addClass('all');
@@ -202,7 +202,7 @@
 		}
 	});
 
-	$('.shuffle').on('click', function(){
+	$('#radio4wp .shuffle').on('click', function(){
 		if ($(this).hasClass('enable')){
 			shuffle = localStorage.shuffle = 'false';
 			$(this).removeClass('enable');
