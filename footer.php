@@ -1,6 +1,7 @@
 <?php 
 	if($_POST["ajax"]){
-?>
+?>		
+		</div><!-- /content -->
 		<wpfooter id="wpfooter"><?php wp_footer(); ?></wpfooter>
 <?php
 	}else{
