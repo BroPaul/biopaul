@@ -8,6 +8,8 @@ Feel free to download, use, test, or modify it. But DO NOT use it for commercial
 
 本主题修改自WordPress收费主题 `Biopic`，**请勿用于商业用途**！
 
+主题安装说明请参考 http://bropaul.com/biopaul ，演示站点 http://bropaul.tk/
+
 ###**V2.0** 修改的内容如下：
 
  1. 尽量减少HTTP请求（图片用base64编码）
