@@ -56,7 +56,7 @@
 </style>
 <script>
 <?php
-	if (ot_get_option('if_ajaxify') == "on"){
+	if (ot_get_option('if_ajaxify') !== "off"){
 ?>
 //重新加载js
 function reloadJs(){

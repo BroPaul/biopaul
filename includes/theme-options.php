@@ -127,7 +127,7 @@ function custom_theme_options() {
       array(
         'id'          => 'profile_page',
         'label'       => '指定首页页面',
-        'desc'        => '首页内容一般为简要的自我介绍。新建相应页面后，在这里选择，即可在网站首页显示其内容',
+        'desc'        => '首页内容一般为简要的自我介绍。新建相应页面后，在这里选中，网站首页显示的即为该页面的内容',
         'std'         => '',
         'type'        => 'page-select',
         'section'     => 'general_default',
@@ -142,7 +142,7 @@ function custom_theme_options() {
       array(
         'id'          => 'resume_page',
         'label'       => '指定简历页面',
-        'desc'        => '新建相应页面后，在这里选择，将其指定为“简历”页面',
+        'desc'        => '新建相应页面后，在这里选中，“简历”显示的即为该页面的内容',
         'std'         => '',
         'type'        => 'page-select',
         'section'     => 'general_default',
@@ -157,7 +157,7 @@ function custom_theme_options() {
       array(
         'id'          => 'portfolio_page',
         'label'       => '指定作品页面',
-        'desc'        => '新建相应页面后，在这里选择，将其指定为“作品”页面。该页面的模板必须为“Portofolio Page”，不然无法正常显示',
+        'desc'        => '新建相应页面（页面的模板必须为“Portofolio 模版”）后，在这里选中，新建的“作品”将显示在该页面内',
         'std'         => '',
         'type'        => 'page-select',
         'section'     => 'general_default',
@@ -172,7 +172,7 @@ function custom_theme_options() {
       array(
         'id'          => 'blog_page',
         'label'       => '指定博客页面',
-        'desc'        => '新建相应页面后，在这里选择，将其指定为“博客”页面',
+        'desc'        => '新建相应页面（页面的模板必须为“Blog 模版”）后，在这里选中，新建的“文章”将显示在该页面内',
         'std'         => '',
         'type'        => 'page-select',
         'section'     => 'general_default',
@@ -187,7 +187,7 @@ function custom_theme_options() {
       array(
         'id'          => 'contact_page',
         'label'       => '指定留言页面',
-        'desc'        => '新建相应页面后，在这里选择，将其指定为“留言”页面',
+        'desc'        => '新建相应页面（页面的模板为“Contact 模版”）后，在这里选中，将其指定为“留言”页面',
         'std'         => '',
         'type'        => 'page-select',
         'section'     => 'general_default',
@@ -202,7 +202,7 @@ function custom_theme_options() {
       array(
         'id'          => 'if_ajaxify',
         'label'       => '全站Ajax加载',
-        'desc'        => '如果希望能全站播放背景音乐，请务必开启此项。手机用户访问时不会启用',
+        'desc'        => '如果希望全站播放背景音乐，请务必开启此项',
         'std'         => '',
         'type'        => 'on-off',
         'section'     => 'advanced_settings',
@@ -233,7 +233,7 @@ function custom_theme_options() {
         'id'          => 'bgm',
         'label'       => '背景音乐',
         'desc'        => '支持 mp3/ogg 音乐或 js 列表，请填写网址或直接上传文件。
-上传音乐文件则启用单曲模式，默认自动播放音乐；上传列表文件则启用播放器模式，网页左下角显示播放器。js列表文件格式请参照主题根目录下的 radio_content_example.js 文件',
+上传音乐文件则启用单曲模式，默认自动播放音乐；上传列表文件则启用播放器模式，网页左下角显示播放器。js列表文件格式请参照“无需上传文件”文件夹中的 radio_content_example.js',
         'std'         => '',
         'type'        => 'upload',
         'section'     => 'advanced_settings',
@@ -505,7 +505,7 @@ function custom_theme_options() {
       array(
         'id'          => 'qq_id',
         'label'       => 'QQ',
-        'desc'        => 'QQ号必须是数字帐号，主显帐号是邮箱不影响。如果不想在网址中暴露QQ号，请先到 <a href="http://shang.qq.com/widget/set.php" target="_blank">这里</a> 将“安全级别设置”选择为“安全加密”，保存后到 <a href="http://shang.qq.com/widget/consult.php" target="_blank">QQ通讯组件</a> 获取代码，并在此处填入href=之后，双引号之间的那个网址',
+        'desc'        => '请填写数字QQ号。如果不想在网址中暴露QQ号，请到 <a href="http://shang.qq.com/widget/set.php" target="_blank">这里</a> 将“安全级别设置”选择为“安全加密”后到 <a href="http://shang.qq.com/widget/consult.php" target="_blank">QQ通讯组件</a> 获取代码，并在此处填入href=之后，双引号之间的网址',
         'std'         => '',
         'type'        => 'text',
         'section'     => 'social_icons',
@@ -1030,7 +1030,7 @@ function custom_theme_options() {
       array(
         'id'          => 'mail_address',
         'label'       => 'E-mail',
-        'desc'        => '支持邮箱地址（×××@×××.com）或者在线写信类网址（如QQ邮箱“邮我”，在设置——账户的最下方开启该功能并获取代码后，在此处填入href=之后，双引号之间的那个网址）',
+        'desc'        => '请填写邮箱地址（如a@b.com）或者在线写信类网址（如QQ邮箱“邮我”，在设置——账户的最下方开启该功能并获取代码后，在此处填入href=之后，双引号之间的那个网址）',
         'std'         => '',
         'type'        => 'text',
         'section'     => 'social_icons',
@@ -1045,7 +1045,7 @@ function custom_theme_options() {
       array(
         'id'          => 'rss_feed',
         'label'       => 'RSS Feed',
-        'desc'        => '请填写完整网址。一般为“您的博客地址/feed/”',
+        'desc'        => '请填写完整网址。一般为“您的博客网址/feed/”',
         'std'         => '',
         'type'        => 'text',
         'section'     => 'social_icons',
