@@ -37,7 +37,7 @@
 ?>
 <a id="gotop" href="javascript:;"><i class="fa fa-arrow-circle-up"><span>▲</span></i></a>
 <?php
-		if (ot_get_option('if_ajaxify')=="on"){
+		if (ot_get_option('if_ajaxify')!=="off"){
 			echo '<div id="loader"></div>';
 		}
 		if ($background_grid = ot_get_option('background_grid')) {

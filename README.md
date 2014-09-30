@@ -1,4 +1,4 @@
-#bioPaul
+#BioPaul
 
 A WordPress theme adapted from Biopic
 
