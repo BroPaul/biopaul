@@ -109,7 +109,7 @@
 ?>
 				<span class="title">
 <?php
-		if (ot_get_option('work_items_link_status') == 'on') {
+		if (ot_get_option('work_items_link_status') !== 'off') {
 			$permalink = get_permalink();
 			if ($work_external_url) {
 				$permalink = $work_external_url;
