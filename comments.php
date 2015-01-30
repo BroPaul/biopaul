@@ -23,7 +23,7 @@
 		echo "</h5>";
 	}else {
 ?>
-				<img class="gravatar" src="http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&s=40"><?php comment_form_title('<span class="hidden">忍不住就</span>吐个槽吧', '有话对 %s 说？'); ?><small class="cancelCommentReply"><?php cancel_comment_reply_link('（取消）'); ?></small>
+				<img class="gravatar" src="http://cn.gravatar.com/avatar/00000000000000000000000000000000?d=mm&s=40"><?php comment_form_title('<span class="hidden">忍不住就</span>吐个槽吧', '有话对 %s 说？'); ?><small class="cancelCommentReply"><?php cancel_comment_reply_link('（取消）'); ?></small>
 			</h5>
 			<form id="commentform" action="<?php echo site_url(); ?>/wp-comments-post.php" method="post">
 <?php

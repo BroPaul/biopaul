@@ -547,7 +547,7 @@ if (!preg_match('/Mobile/', $_SERVER['HTTP_USER_AGENT'])) {
 	function custom_html() {
 ?>
 <div id="footer">
-	<p>Modifier: <a href="http://www.bropaul.com/" target="_blank">Paul Allen</a> | Inspired by <a href="http://webjyh.com" target="_blank">M.J</a></p>
+	<p>Inspired by <a href="http://webjyh.com" target="_blank">M.J</a></p>
 </div>
 <div id="loading">
 	<img src="data:image/gif;base64,R0lGODlhOgAKAKIFAERERIWFhWVlZdbW1qampv///wAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQFCgAFACwAAAAAOgAKAAADawi6XCUwSheqvY7ozd34YMiMgCOdAnWtGed6YUw2Dxqpq9W6GxyDs4XJBsHlAjsewfcbBBVDojGX5DF/z1JNWjjqCspeoQl8Rm1TFji8HJOd5i2660Wuw1dZnFike6svbmRZZyhpGHdKeSEJACH5BAUKAAUALAAAAAA6AAoAAANrOLpcBTBKJ6q9LujNHflgyIyDI50Ada0Z53phTDYPGqmr1bobHIOzhckGweUEO17A9yMEFUOiMZfkMX/PUk1aOOoKyl6hCXxGbVMWOLwck53mLbrrRa7DV1mcWKR7qy9uZFlnKGkYd0p5IQkAIfkEBQoABQAsAAAAADoACgAAA2tIulw1MEoHqr1O6M1d+GDIjIQjnQN1rRnnemFMNg8aqavVuhscg7OFyQbB5QA7nsD3CwQVQ6Ixl+Qxf89STVo46grKXqEJfEZtUxY4vByTneYtuutFrsNXWZxYpHurL25kWWcoaRh3SnkhCQAh+QQFCgAFACwAAAAAOgAKAAADaxi6XEUwSjeqvQ7ozZ34YMiMgSOdBHWtGed6YUw2Dxqpq9W6GxyDs4XJBsHlBjsewPcTBBVDojGX5DF/z1JNWjjqCspeoQl8Rm1TFji8HJOd5i2660Wuw1dZnFike6svbmRZZyhpGHdKeSEJACH5BAUKAAUALAAAAAA6AAoAAANrKLpcFTBKR6q9bujNHfhgyIyCI50Bda0Z53phTDYPGqmr1bobHIOzhckGweUIO97A9wMEFUOiMZfkMX/PUk1aOOoKyl6hCXxGbVMWOLwck53mLbrrRa7DV1mcWKR7qy9uZFlnKGkYd0p5IQkAOw==">
@@ -559,6 +559,14 @@ if (!preg_match('/Mobile/', $_SERVER['HTTP_USER_AGENT'])) {
 <?php
 	}
 	add_action('login_footer', 'custom_html');
+
+//Gravatar头像被墙
+function mytheme_get_avatar($avatar) {
+    $avatar = str_replace(array("www.gravatar.com","0.gravatar.com","1.gravatar.com","2.gravatar.com"),"cn.gravatar.com",$avatar);
+    return $avatar;
+}
+add_filter( 'get_avatar', 'mytheme_get_avatar', 10, 3 );
+
 }
 ?>
 <?php 

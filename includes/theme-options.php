@@ -430,7 +430,7 @@ function custom_theme_options() {
       array(
         'id'          => 'sina_id',
         'label'       => '新浪微博（http://weibo.com/×××）',
-        'desc'        => '请填写×××处内容',
+        'desc'        => '请填写完整URL，包含http(s)://',
         'std'         => '',
         'type'        => 'text',
         'section'     => 'social_icons',
@@ -445,7 +445,7 @@ function custom_theme_options() {
       array(
         'id'          => 'tencent_id',
         'label'       => '腾讯微博（http://t.qq.com/×××）',
-        'desc'        => '请填写×××处内容',
+        'desc'        => '请填写完整URL，包含http(s)://',
         'std'         => '',
         'type'        => 'text',
         'section'     => 'social_icons',
@@ -459,8 +459,8 @@ function custom_theme_options() {
       ),
       array(
         'id'          => 'baidu_id',
-        'label'       => '百度贴吧',
-        'desc'        => '请直接填写百度帐号，将链接到您的百度个人主页（贴吧Tab）：http://www.baidu.com/p/×××?from=tieba',
+        'label'       => '百度贴吧（http://www.baidu.com/p/×××?from=tieba 或者 http://tieba.baidu.com/home/main?id=×××）',
+        'desc'        => '请填写完整URL，包含http(s)://',
         'std'         => '',
         'type'        => 'text',
         'section'     => 'social_icons',
@@ -475,7 +475,7 @@ function custom_theme_options() {
       array(
         'id'          => 'renren_id',
         'label'       => '人人（http://www.renren.com/×××）',
-        'desc'        => '请填写×××处内容',
+        'desc'        => '请填写完整URL，包含http(s)://',
         'std'         => '',
         'type'        => 'text',
         'section'     => 'social_icons',
@@ -490,7 +490,7 @@ function custom_theme_options() {
       array(
         'id'          => 'kaixin_id',
         'label'       => '开心网（http://www.kaixin001.com/home/?uid=×××）',
-        'desc'        => '请填写×××处的数字',
+        'desc'        => '请填写完整URL，包含http(s)://',
         'std'         => '',
         'type'        => 'text',
         'section'     => 'social_icons',
@@ -505,7 +505,7 @@ function custom_theme_options() {
       array(
         'id'          => 'qq_id',
         'label'       => 'QQ',
-        'desc'        => '请填写数字QQ号。如果不想在网址中暴露QQ号，请到 <a href="http://shang.qq.com/widget/set.php" target="_blank">这里</a> 将“安全级别设置”选择为“安全加密”后到 <a href="http://shang.qq.com/widget/consult.php" target="_blank">QQ通讯组件</a> 获取代码，并在此处填入href=之后，双引号之间的网址',
+        'desc'        => '请填写数字QQ号。如果不想在网址中暴露QQ号，请到 <a href="http://shang.qq.com/v3/widget.html" target="_blank">这里</a> ——设置——安全级别设置，选择“安全加密”，保存后刷新网页，到“QQ通讯组件”获取代码，并在此处填入您的IDKEY（代码中IDKEY=后面的48位字符串）',
         'std'         => '',
         'type'        => 'text',
         'section'     => 'social_icons',
@@ -535,7 +535,7 @@ function custom_theme_options() {
       array(
         'id'          => 'twitter_id',
         'label'       => 'Twitter（https://twitter.com/×××）',
-        'desc'        => '请填写×××处内容',
+        'desc'        => '请填写完整URL，包含http(s)://',
         'std'         => '',
         'type'        => 'text',
         'section'     => 'social_icons',
@@ -550,7 +550,7 @@ function custom_theme_options() {
       array(
         'id'          => 'facebook_id',
         'label'       => 'Facebook（https://www.facebook.com/×××）',
-        'desc'        => '请填写×××处内容',
+        'desc'        => '请填写完整URL，包含http(s)://',
         'std'         => '',
         'type'        => 'text',
         'section'     => 'social_icons',
@@ -565,7 +565,7 @@ function custom_theme_options() {
       array(
         'id'          => 'gplus_id',
         'label'       => 'Google Plus（https://plus.google.com/×××）',
-        'desc'        => '请填写×××处内容',
+        'desc'        => '请填写完整URL，包含http(s)://',
         'std'         => '',
         'type'        => 'text',
         'section'     => 'social_icons',
@@ -595,7 +595,7 @@ function custom_theme_options() {
       array(
         'id'          => 'youku_id',
         'label'       => '优酷（http://i.youku.com/×××）',
-        'desc'        => '有个性化域名的请直接填写×××处内容；没有个性化域名的频道网址会是 http://i.youku.com/u/××× 的形式，因此请填写 “u/×××”',
+        'desc'        => '请填写完整URL，包含http(s)://',
         'std'         => '',
         'type'        => 'text',
         'section'     => 'social_icons',
@@ -610,7 +610,7 @@ function custom_theme_options() {
       array(
         'id'          => 'tudou_id',
         'label'       => '土豆（http://www.tudou.com/home/×××）',
-        'desc'        => '请填写×××处内容',
+        'desc'        => '请填写完整URL，包含http(s)://',
         'std'         => '',
         'type'        => 'text',
         'section'     => 'social_icons',
@@ -625,7 +625,7 @@ function custom_theme_options() {
       array(
         'id'          => 'bilibili_id',
         'label'       => '哔哩哔哩（http://space.bilibili.tv/×××）',
-        'desc'        => '请填写×××处数字',
+        'desc'        => '请填写完整URL，包含http(s)://',
         'std'         => '',
         'type'        => 'text',
         'section'     => 'social_icons',
@@ -640,7 +640,7 @@ function custom_theme_options() {
       array(
         'id'          => 'xiami_id',
         'label'       => '虾米（http://www.xiami.com/u/×××）',
-        'desc'        => '请填写×××处数字',
+        'desc'        => '请填写完整URL，包含http(s)://',
         'std'         => '',
         'type'        => 'text',
         'section'     => 'social_icons',
@@ -655,7 +655,7 @@ function custom_theme_options() {
       array(
         'id'          => 'songtaste_id',
         'label'       => 'SongTaste（http://www.songtaste.com/user/×××/）',
-        'desc'        => '请填写×××处数字',
+        'desc'        => '请填写完整URL，包含http(s)://',
         'std'         => '',
         'type'        => 'text',
         'section'     => 'social_icons',
@@ -670,7 +670,7 @@ function custom_theme_options() {
       array(
         'id'          => 'huaban_id',
         'label'       => '花瓣（http://huaban.com/×××）',
-        'desc'        => '请填写×××处内容',
+        'desc'        => '请填写完整URL，包含http(s)://',
         'std'         => '',
         'type'        => 'text',
         'section'     => 'social_icons',
@@ -685,7 +685,7 @@ function custom_theme_options() {
       array(
         'id'          => 'youtube_id',
         'label'       => 'Youtube（https://www.youtube.com/user/×××）',
-        'desc'        => '请填写×××处内容',
+        'desc'        => '请填写完整URL，包含http(s)://',
         'std'         => '',
         'type'        => 'text',
         'section'     => 'social_icons',
@@ -700,7 +700,7 @@ function custom_theme_options() {
       array(
         'id'          => 'vimeo_id',
         'label'       => 'Vimeo（http://vimeo.com/×××）',
-        'desc'        => '请填写×××处内容',
+        'desc'        => '请填写完整URL，包含http(s)://',
         'std'         => '',
         'type'        => 'text',
         'section'     => 'social_icons',
@@ -715,7 +715,7 @@ function custom_theme_options() {
       array(
         'id'          => 'soundcloud_id',
         'label'       => 'SoundCloud（https://soundcloud.com/×××）',
-        'desc'        => '请填写×××处内容',
+        'desc'        => '请填写完整URL，包含http(s)://',
         'std'         => '',
         'type'        => 'text',
         'section'     => 'social_icons',
@@ -730,7 +730,7 @@ function custom_theme_options() {
       array(
         'id'          => 'flickr_id',
         'label'       => 'Flickr（https://www.flickr.com/photos/×××/）',
-        'desc'        => '请填写×××处内容',
+        'desc'        => '请填写完整URL，包含http(s)://',
         'std'         => '',
         'type'        => 'text',
         'section'     => 'social_icons',
@@ -745,7 +745,7 @@ function custom_theme_options() {
       array(
         'id'          => 'instagram_id',
         'label'       => 'Instagram（http://instagram.com/×××）',
-        'desc'        => '请填写×××处内容',
+        'desc'        => '请填写完整URL，包含http(s)://',
         'std'         => '',
         'type'        => 'text',
         'section'     => 'social_icons',
@@ -760,7 +760,7 @@ function custom_theme_options() {
       array(
         'id'          => 'f500px_id',
         'label'       => '500px（http://500px.com/×××）',
-        'desc'        => '请填写×××处内容',
+        'desc'        => '请填写完整URL，包含http(s)://',
         'std'         => '',
         'type'        => 'text',
         'section'     => 'social_icons',
@@ -775,7 +775,7 @@ function custom_theme_options() {
       array(
         'id'          => 'pinterest_id',
         'label'       => 'Pinterest（http://www.pinterest.com/×××/）',
-        'desc'        => '请填写×××处内容',
+        'desc'        => '请填写完整URL，包含http(s)://',
         'std'         => '',
         'type'        => 'text',
         'section'     => 'social_icons',
@@ -790,7 +790,7 @@ function custom_theme_options() {
       array(
         'id'          => 'zhihu_id',
         'label'       => '知乎（http://www.zhihu.com/people/×××）',
-        'desc'        => '请填写×××处内容',
+        'desc'        => '请填写完整URL，包含http(s)://',
         'std'         => '',
         'type'        => 'text',
         'section'     => 'social_icons',
@@ -805,7 +805,7 @@ function custom_theme_options() {
       array(
         'id'          => 'guokr_id',
         'label'       => '果壳（http://www.guokr.com/i/×××/）',
-        'desc'        => '请填写×××处数字',
+        'desc'        => '请填写完整URL，包含http(s)://',
         'std'         => '',
         'type'        => 'text',
         'section'     => 'social_icons',
@@ -820,7 +820,7 @@ function custom_theme_options() {
       array(
         'id'          => 'douban_id',
         'label'       => '豆瓣（http://www.douban.com/people/×××/）',
-        'desc'        => '请填写×××处内容',
+        'desc'        => '请填写完整URL，包含http(s)://',
         'std'         => '',
         'type'        => 'text',
         'section'     => 'social_icons',
@@ -834,8 +834,8 @@ function custom_theme_options() {
       ),
       array(
         'id'          => 'zcool_id',
-        'label'       => '站酷',
-        'desc'        => '如果没有使用个性化域名，请填写http://www.zcool.com.cn/u/××× 中×××处数字；使用个性化域名的请直接填写全部网址，不要忘了“http://”',
+        'label'       => '站酷（http://www.zcool.com.cn/u/××× 或 http://×××.zcool.com.cn/）',
+        'desc'        => '请填写完整URL，包含http(s)://',
         'std'         => '',
         'type'        => 'text',
         'section'     => 'social_icons',
@@ -850,7 +850,7 @@ function custom_theme_options() {
       array(
         'id'          => 'yiyan_id',
         'label'       => '译言（http://user.yeeyan.org/u/×××）',
-        'desc'        => '请填写×××处内容',
+        'desc'        => '请填写完整URL，包含http(s)://',
         'std'         => '',
         'type'        => 'text',
         'section'     => 'social_icons',
@@ -865,7 +865,7 @@ function custom_theme_options() {
       array(
         'id'          => 'segmentfault_id',
         'label'       => 'SegmentFault（http://segmentfault.com/u/×××）',
-        'desc'        => '请填写×××处内容',
+        'desc'        => '请填写完整URL，包含http(s)://',
         'std'         => '',
         'type'        => 'text',
         'section'     => 'social_icons',
@@ -880,7 +880,7 @@ function custom_theme_options() {
       array(
         'id'          => 'quora_id',
         'label'       => 'Quora（https://www.quora.com/×××）',
-        'desc'        => '请填写×××处内容',
+        'desc'        => '请填写完整URL，包含http(s)://',
         'std'         => '',
         'type'        => 'text',
         'section'     => 'social_icons',
@@ -894,8 +894,8 @@ function custom_theme_options() {
       ),
       array(
         'id'          => 'dropbox_id',
-        'label'       => 'Dropbox 邀请链接',
-        'desc'        => '请填写完整的Dropbox邀请链接，如 “https://db.tt/×××”',
+        'label'       => 'Dropbox 邀请链接（https://db.tt/×××）',
+        'desc'        => '请填写完整URL，包含http(s)://',
         'std'         => '',
         'type'        => 'text',
         'section'     => 'social_icons',
@@ -909,8 +909,8 @@ function custom_theme_options() {
       ),
       array(
         'id'          => 'linkedin_id',
-        'label'       => 'Linkedin',
-        'desc'        => '请填写完整的个人主页链接，如“http://www.linkedin.com/pub/×××/×××/×××/×××”',
+        'label'       => 'Linkedin（http://www.linkedin.com/pub/×××/×××/×××/×××）',
+        'desc'        => '请填写完整URL，包含http(s)://',
         'std'         => '',
         'type'        => 'text',
         'section'     => 'social_icons',
@@ -925,7 +925,7 @@ function custom_theme_options() {
       array(
         'id'          => 'dribbble_id',
         'label'       => 'Dribbble（http://dribbble.com/×××）',
-        'desc'        => '请填写×××处内容',
+        'desc'        => '请填写完整URL，包含http(s)://',
         'std'         => '',
         'type'        => 'text',
         'section'     => 'social_icons',
@@ -940,7 +940,7 @@ function custom_theme_options() {
       array(
         'id'          => 'github_id',
         'label'       => 'Github（https://github.com/×××）',
-        'desc'        => '请填写×××处内容',
+        'desc'        => '请填写完整URL，包含http(s)://',
         'std'         => '',
         'type'        => 'text',
         'section'     => 'social_icons',
@@ -955,7 +955,7 @@ function custom_theme_options() {
       array(
         'id'          => 'stackexchange_id',
         'label'       => 'StackExchange（http://stackexchange.com/users/×××）',
-        'desc'        => '请填写×××处内容。注意这里是总站StackExchange的，不要填成了StackOverflow的',
+        'desc'        => '请填写完整URL，包含http(s)://。注意这里是总站StackExchange的，不要填成了StackOverflow的',
         'std'         => '',
         'type'        => 'text',
         'section'     => 'social_icons',
@@ -1045,7 +1045,7 @@ function custom_theme_options() {
       array(
         'id'          => 'rss_feed',
         'label'       => 'RSS Feed',
-        'desc'        => '请填写完整网址。一般为“您的博客网址/feed/”',
+        'desc'        => '请填写完整网址，包含http(s)://。一般为“您的博客网址/feed/”',
         'std'         => '',
         'type'        => 'text',
         'section'     => 'social_icons',
@@ -1060,7 +1060,7 @@ function custom_theme_options() {
       array(
         'id'          => 'any_url',
         'label'       => '自定义链接',
-        'desc'        => '请填写完整网址。不要忘了“http://”',
+        'desc'        => '请填写完整网址，包含http(s)://',
         'std'         => '',
         'type'        => 'text',
         'section'     => 'social_icons',
