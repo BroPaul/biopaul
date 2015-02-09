@@ -51,7 +51,7 @@
 					<input type="submit" name="comment-btn" id="comment-btn" value="写好了" class="button" />
 					<span class="embedSmiley"><a href="javascript:smiley();"><img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/14/tza_thumb.gif" alt="表情" title="表情"></a></span>
 				</div>
-<?php require_once(TEMPLATEPATH.'/includes/smiley.php'); ?>
+<?php require(TEMPLATEPATH.'/includes/smiley.php'); ?>
 <?php comment_id_fields(); ?>
 <?php do_action('comment_form', $post->ID); ?>
 			</form>

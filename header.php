@@ -6,7 +6,7 @@
 <head>
 <title><?php wp_title('|', true, 'right'); ?><?php bloginfo('name'); ?></title>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=1">
+<meta name="viewport" content="width=device-width, user-scalable=no">
 <?php
 	if ($site_d = ot_get_option('site_description')) {
 		echo "<meta name='description' content='".$site_d."'>";
