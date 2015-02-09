@@ -6,7 +6,7 @@
 <head>
 <title><?php wp_title('|', true, 'right'); ?><?php bloginfo('name'); ?></title>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=1">
+<meta name="viewport" content="width=device-width, user-scalable=no">
 <?php
 	if ($site_d = ot_get_option('site_description')) {
 		echo "<meta name='description' content='".$site_d."'>";
@@ -60,7 +60,7 @@
 ?>
 //重新加载js
 function reloadJs(){
-	$("#email").focus(function(){$("img.gravatar").removeClass("glow")}).blur(function(){$("img.gravatar").attr("src","http://www.gravatar.com/avatar.php?gravatar_id="+hex_md5($("#email").val())+"&size=40&r=G&d=mm").addClass("glow")});txt1='<div id="loading">正在提交, 请稍候...</div>',txt2='<div id="error"></div>';$('#comment').after(txt1+txt2);$('#loading,#error').hide();$("a[rel^='prettyPhoto'],a[href$='.jpg'],a[href$='.gif'],a[href$='.png']").prettyPhoto();var $container=$("#portfolio-list");$container.isotope({filter:"*",layoutMode:"masonry",animationOptions:{duration:750,easing:"linear"}});$("body").on("click","#portfolio-filter a",function(e){e.preventDefault();$(".active").removeClass("active");$(this).parent().addClass("active");var selector=$(this).attr("data-filter");$container.isotope({filter:selector,animationOptions:{duration:750,easing:"linear",queue:false,}})});if(typeof mejs!=="undefined"){$("#content video,#content audio").mediaelementplayer()}if(typeof DUOSHUO!=="undefined"){DUOSHUO.RecentComments&&DUOSHUO.RecentComments(".ds-recent-comments");DUOSHUO.RecentVisitors(".ds-recent-visitors");DUOSHUO.EmbedThread(".ds-thread")}if(typeof _hmt!="undefined"){pageURL=window.location.pathname;_hmt.push(["_trackPageview",pageURL])}; 
+	$("#email").focus(function(){$("img.gravatar").removeClass("glow")}).blur(function(){$("img.gravatar").attr("src","//cn.gravatar.com/avatar/"+hex_md5($("#email").val())+"&size=40&r=G&d=mm").addClass("glow")});txt1='<div id="loading">正在提交, 请稍候...</div>',txt2='<div id="error"></div>';$('#comment').after(txt1+txt2);$('#loading,#error').hide();$("a[rel^='prettyPhoto'],a[href$='.jpg'],a[href$='.gif'],a[href$='.png']").prettyPhoto();var $container=$("#portfolio-list");$container.isotope({filter:"*",layoutMode:"masonry",animationOptions:{duration:750,easing:"linear"}});$("body").on("click","#portfolio-filter a",function(e){e.preventDefault();$(".active").removeClass("active");$(this).parent().addClass("active");var selector=$(this).attr("data-filter");$container.isotope({filter:selector,animationOptions:{duration:750,easing:"linear",queue:false,}})});if(typeof mejs!=="undefined"){$("#content video,#content audio").mediaelementplayer()}if(typeof DUOSHUO!=="undefined"){DUOSHUO.RecentComments&&DUOSHUO.RecentComments(".ds-recent-comments");DUOSHUO.RecentVisitors(".ds-recent-visitors");DUOSHUO.EmbedThread(".ds-thread")}if(typeof _hmt!="undefined"){pageURL=window.location.pathname;_hmt.push(["_trackPageview",pageURL])};
 <?php
 		if ($custom_reloadjs = ot_get_option('custom_reloadjs')){
 			echo $custom_reloadjs;
