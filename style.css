@@ -4,7 +4,7 @@
 	Description: A responsive wordpress theme adapted from Biopic.
 	Author: Paul Allen
 	Author URI: http://bropaul.com/biopaul
-	Version: 2015.1.30
+	Version: 2015.3.30
 */
 
 /* 重置CSS & 基础样式 */
@@ -661,6 +661,7 @@ footer{
 	.single .main,.search-results .main{width: 490px}
 	.sidebar {width: 120px;margin-right: -40px}
 	.profile .sidebar, .author .sidebar{width:140px;margin:40px 30px 0 0;}
+	.hidden { display: none; }
 	input#s{width: 100px}
 	footer{background: transparent;}
  }

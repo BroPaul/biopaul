@@ -22,13 +22,12 @@
 <?php else : ?>
 	<div class="center">
 		<h1><strong>Error 404</strong></h1>
-		<h4>我们找不到 "<?php echo get_search_query() ?>"，他们找不到孩子</h4>
+		<h4>我们找不到 "<?php echo get_search_query() ?>"<span class="hidden">，，他们找不到孩子</span></h4>
 		<p>您可以更换关键词重新搜索，或者<a href="<?php echo home_url()?>">回首页</a>，谢谢</p>
 		<?php get_search_form() ?>
 	</div>
-	<div class="hidden" id="js_404">
-		<script type="text/javascript" src="http://www.qq.com/404/search_children.js?edition=small" charset="utf-8"></script>
-		<style>.mod_lost_child_little{margin: 0 auto}#shareContent,.mod_lost_child_little .hd{display: none}</style>
+	<div class="hidden">
+		<iframe scrolling='no' frameborder='0' src='http://yibo.iyiyun.com/Home/Distribute/ad404/key/18181' width='720' height='470' style='display:block;'></iframe>
 	</div>
 <?php endif; ?>
 </div>
