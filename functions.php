@@ -59,7 +59,7 @@
 		wp_enqueue_script('jquery');
 		wp_enqueue_script('biopaulfunctions', get_template_directory_uri().'/biopaul.js');
 
-		//只在single页面加载评论JS（已经包含在includes/smiley.php中，减少请求数）
+		//只在single页面加载评论JS（已经包含在bropaul.js中，减少请求数）
 		// if ( is_singular() && comments_open() && get_option('thread_comments') ) {
 		// 	wp_enqueue_script( 'comment-reply' );
 		}
@@ -436,7 +436,7 @@ function ajax_comment(){
 	if ( $comment_author_email ) $dupe .= "OR comment_author_email = '$comment_author_email' ";
 	$dupe .= ") AND comment_content = '$comment_content' LIMIT 1";
 	if ( $wpdb->get_var($dupe) ) {
-		ajax_comment_err('刷新看看，你要发表的评论是不是已经出现了？');
+		ajax_comment_err('仔细看看，这条评论是不是已经发表过了？');
 	}
 	if ( $lasttime = $wpdb->get_var( $wpdb->prepare("SELECT comment_date_gmt FROM $wpdb->comments WHERE comment_author = %s ORDER BY comment_date DESC LIMIT 1", $comment_author) ) ) {
 		$time_lastcomment = mysql2date('U', $lasttime, false);
@@ -489,7 +489,7 @@ function ajax_comment(){
 }
 function ajax_comment_err($msg) {
 	header('Allow: POST');
-	header('HTTP/1.1 886 出错了');
+	header('HTTP/1.1 500 Error');
 	header('Content-Type: text/plain');
 	echo $msg;
 	exit;

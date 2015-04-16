@@ -25,11 +25,13 @@
       this.init_radio_image_select();
       this.init_select_wrapper();
       this.bind_select_wrapper();
+      this.init_google_fonts();
       this.fix_upload_parent();
       this.fix_textarea();
       this.replicate_ajax();
       this.reset_settings();
-      this.css_editor_mode();      
+      this.css_editor_mode();
+      this.javascript_editor_mode();
     },
     init_hide_body: function(elm,type) {
       var css = '.option-tree-setting-body';
@@ -411,6 +413,7 @@
         } else {
           OT_UI.parse_condition();
         }
+        OT_UI.load_editors();
       });
       OT_UI.parse_condition();
     },
@@ -533,7 +536,7 @@
           step: hidden.data("step"),
           value: value, 
           slide: function(event, ui) {
-            hidden.add(helper).val(ui.value);
+            hidden.add(helper).val(ui.value).trigger('change');
           },
           create: function() {
             hidden.val($(this).slider('value'));
@@ -584,15 +587,83 @@
       });
     },
     bind_select_wrapper: function() {
-      $(document).on('change', '.option-tree-ui-select', function () {
-        $(this).prev('span').replaceWith('<span>' + $(this).find('option:selected').text() + '</span>');
-      });
-      $(document).on($.browser.msie ? 'click' : 'change', '.option-tree-ui-select', function(event) {
+      $('.option-tree-ui-select').on('change', function () {
         $(this).prev('span').replaceWith('<span>' + $(this).find('option:selected').text() + '</span>');
       });
     },
+    init_google_fonts: function() {
+      var update_items = function(input, items, element) {
+        var itemsUI = input.closest('.type-google-font-group').find(element);
+        if ( itemsUI.length ) {
+          itemsUI.empty();
+          itemsUI.append($.map(items, function(item) {
+            var input = document.createElement('input'),
+                label = document.createElement('label');
+            input.type = 'checkbox';
+            input.id = ( itemsUI.data('field-id-prefix') || '' ) + item;
+            input.name =  ( itemsUI.data('field-name') || '' ) + '[]';
+            input.value =  item;
+            label.innerHTML = item;
+            $( label ).attr( 'for', input.id );
+            return $( document.createElement('p') ).addClass('checkbox-wrap').append([input, label]);
+          }));
+        }
+      };
+      $(document).on('change', '.option-tree-google-font-family select', function() {
+        var input = $(this);
+        $.ajax({
+          url: option_tree.ajax,
+          type: 'POST',
+          dataType: 'json',
+          data: {
+            action: 'ot_google_font',
+            family: input.val(), 
+            field_id: input.attr('id')
+          }
+        }).done(function(response) {
+          if ( response.hasOwnProperty('variants') ) {
+            update_items( input, response.variants, '.option-tree-google-font-variants' );
+          }
+          if ( response.hasOwnProperty('subsets') ) {
+            update_items( input, response.subsets, '.option-tree-google-font-subsets' );
+          }
+        });
+      });
+      $('.js-add-google-font').on('click', function (event) {
+        var $group = $(this).parent('.format-setting-inner').find('.type-google-font-group'),
+            $el_clone = $(this).prev('.type-google-font-group-clone'),
+            $clone = $el_clone.clone(true),
+            $count = $group.length ? $group.length : 0;
+        $clone.attr('class', 'type-google-font-group');
+        var replacer = function(index, elm) { 
+          return elm.replace('%key%', $count);
+        }
+        $('select', $clone).each( function() {
+          $(this).attr('id', replacer ).attr('name', replacer );
+        });
+        $('.option-tree-google-font-variants', $clone).each( function() {
+          $(this).attr('data-field-id-prefix', replacer ).attr('data-field-name', replacer );
+        });
+        $('.option-tree-google-font-subsets', $clone).each( function() {
+          $(this).attr('data-field-id-prefix', replacer ).attr('data-field-name', replacer );
+        });
+        $el_clone.before($clone)
+        event.preventDefault()
+      });
+      $('.js-remove-google-font').on('click', function (event) {
+        $(this).parents('.type-google-font-group').remove();
+        event.preventDefault();
+      });
+    },
     bind_colorpicker: function(field_id) {
-      $('#'+field_id).wpColorPicker();
+      $('#'+field_id).wpColorPicker({
+        change: function() {
+          OT_UI.parse_condition();
+        }, 
+        clear: function() {
+          OT_UI.parse_condition();
+        }
+      });
     },
     bind_date_picker: function(field_id, date_format) {
       $('#'+field_id).datepicker({
@@ -665,6 +736,27 @@
           editor.getSession().setValue(this_textarea.val());
         });
       });
+    },
+    javascript_editor_mode: function() {
+      $('.ot-javascript-editor').each(function() {
+        var editor = ace.edit($(this).attr('id'));
+        var this_textarea = $('#textarea_' + $(this).attr('id'));
+        editor.setTheme("ace/theme/chrome");
+        editor.getSession().setMode("ace/mode/javascript");
+        editor.setShowPrintMargin( false );
+    
+        editor.getSession().setValue(this_textarea.val());
+        editor.getSession().on('change', function(){
+          this_textarea.val(editor.getSession().getValue());
+        });
+        this_textarea.on('change', function(){
+          editor.getSession().setValue(this_textarea.val());
+        });
+      });
+    },
+    load_editors: function() {
+      OT_UI.css_editor_mode();
+      OT_UI.javascript_editor_mode();
     },
     url_exists: function(url) {
       var link = document.createElement('a')
@@ -878,7 +970,7 @@
             if ( $(this).find('.ot-metabox-panels').css('padding') == '12px' && child < parent ) {
               $(this).find('.ot-metabox-panels').css({ minHeight: minHeight })
             }
-            OT_UI.css_editor_mode();
+            OT_UI.load_editors();
           }
         })
         
@@ -889,7 +981,7 @@
         $(this).find('.ot-metabox-tabs').removeClass('ui-widget ui-widget-content ui-corner-all')
         $(this).find('.ot-metabox-nav').removeClass('ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all')
         $(this).find('.ot-metabox-nav li').removeClass('ui-state-default ui-corner-top ui-tabs-active ui-tabs-active')
-        $(this).find('.ot-metabox-nav li').on('hover', function() { $(this).removeClass('ui-state-hover') })
+        $(this).find('.ot-metabox-nav li').on('mouseenter mouseleave', function() { $(this).removeClass('ui-state-hover') })
 
       }
     
@@ -944,7 +1036,11 @@
         })
         
         // Create the tabs
-        $(this).find('.ot-theme-option-tabs').tabs()
+        $(this).find('.ot-theme-option-tabs').tabs({
+          activate: function( event, ui ) {
+            OT_UI.load_editors();
+          }
+        })
         
         // Move the orphaned settings to the top
         $(this).find('.ot-theme-option-panels > .format-settings').prependTo($(this).find('.ot-theme-option-tabs'))
@@ -1018,118 +1114,179 @@
 }(window.jQuery);
 
 /*!
- * postformats.js v1.0
+ * Adds opacity to the default colorpicker
+ *
+ * Derivative work of the Codestar WP Color Picker.
  */
-!function ($) {
+;(function ( $, window, document, undefined ) {
+  'use strict';
 
-  "use strict"; // jshint ;_;
+  // adding alpha support for Automattic Color.js toString function.
+  if( typeof Color.fn.toString !== undefined ) {
 
-  /* POSTFORMATS CLASS DEFINITION
-   * ====================== */
-  var formats = "input.post-format"
-    , metaboxes = [
-          '#ot-post-format-gallery'
-        , '#ot-post-format-link'
-        , '#ot-post-format-image'
-        , '#ot-post-format-quote'
-        , '#ot-post-format-video'
-        , '#ot-post-format-audio'
-      ]
-    , ids = metaboxes.join(',')
-    , insertAfter = '#titlediv'
-    , imageBox = '#postimagediv'
-    , placeholder = 'postimagediv-placeholder'
-    , Postformats = function (element, options) {
-        this.$element = $(element)
-          .on('click.postformats.data-api', $.proxy(this.toggle, this))
-        this.$id = this.$element.attr('id')
-        this.init()
+    Color.fn.toString = function () {
+
+      // check for alpha
+      if ( this._alpha < 1 ) {
+        return this.toCSS('rgba', this._alpha).replace(/\s+/g, '');
       }
 
-  Postformats.prototype = {
+      var hex = parseInt( this._color, 10 ).toString( 16 );
 
-    constructor: Postformats
-  
-  , init: function () {
+      if ( this.error ) { return ''; }
 
-      // Moves the metaboxes into place
-      $( '#ot-' + this.$id ).insertAfter( $( insertAfter ) ).hide()
-      
-      // Show the checked metabox
-      if ( this.$element.is(':checked') ) {
-      
-        this.show()
-        
+      // maybe left pad it
+      if ( hex.length < 6 ) {
+        for (var i = 6 - hex.length - 1; i >= 0; i--) {
+          hex = '0' + hex;
+        }
       }
-      
-    }
-    
-  , toggle: function () {
 
-      // Hides all the post format metaboxes
-      $(ids).each(function() {
-      
-        $(this).hide()
-        
-      })
-      
-      // Shows the clicked post format metabox
-      this.show()
-      
-    }
-  
-  , show: function () {
-      
-      // Featured image is never really hidden so it requires different code 
-      if ( this.$id == 'post-format-image' ) {
-        
-        if ( $( '#' + placeholder ).length == 0 )
-          $( imageBox ).after( '<div id="' + placeholder + '"></div>' ).insertAfter( insertAfter ).find('h3 span').text(option_tree.with)
-        
-      // Revert image
+      return '#' + hex;
+
+    };
+
+  }
+
+  $.ot_ParseColorValue = function( val ) {
+
+    var value = val.replace(/\s+/g, ''),
+        alpha = ( value.indexOf('rgba') !== -1 ) ? parseFloat( value.replace(/^.*,(.+)\)/, '$1') * 100 ) : 100,
+        rgba  = ( alpha < 100 ) ? true : false;
+
+    return { value: value, alpha: alpha, rgba: rgba };
+
+  };
+
+  $.fn.ot_wpColorPicker = function() {
+
+    return this.each(function() {
+
+      var $this = $(this);
+
+      // check for rgba enabled/disable
+      if( $this.data('rgba') !== false ) {
+
+        // parse value
+        var picker = $.ot_ParseColorValue( $this.val() );
+
+        // wpColorPicker core
+        $this.wpColorPicker({
+
+          // wpColorPicker: change
+          change: function( event, ui ) {
+
+            // update checkerboard background color
+            $this.closest('.wp-picker-container').find('.option-tree-opacity-slider-offset').css('background-color', ui.color.toString());
+            $this.trigger('keyup');
+
+          },
+
+          // wpColorPicker: create
+          create: function( event, ui ) {
+
+            // set variables for alpha slider
+            var a8cIris       = $this.data('a8cIris'),
+                $container    = $this.closest('.wp-picker-container'),
+
+                // appending alpha wrapper
+                $alpha_wrap   = $('<div class="option-tree-opacity-wrap">' +
+                                  '<div class="option-tree-opacity-slider"></div>' +
+                                  '<div class="option-tree-opacity-slider-offset"></div>' +
+                                  '<div class="option-tree-opacity-text"></div>' +
+                                  '</div>').appendTo( $container.find('.wp-picker-holder') ),
+
+                $alpha_slider = $alpha_wrap.find('.option-tree-opacity-slider'),
+                $alpha_text   = $alpha_wrap.find('.option-tree-opacity-text'),
+                $alpha_offset = $alpha_wrap.find('.option-tree-opacity-slider-offset');
+
+            // alpha slider
+            $alpha_slider.slider({
+
+              // slider: slide
+              slide: function( event, ui ) {
+
+                var slide_value = parseFloat( ui.value / 100 );
+
+                // update iris data alpha && wpColorPicker color option && alpha text
+                a8cIris._color._alpha = slide_value;
+                $this.wpColorPicker( 'color', a8cIris._color.toString() );
+                $alpha_text.text( ( slide_value < 1 ? slide_value : '' ) );
+
+              },
+
+              // slider: create
+              create: function() {
+
+                var slide_value = parseFloat( picker.alpha / 100 ),
+                    alpha_text_value = slide_value < 1 ? slide_value : '';
+
+                // update alpha text && checkerboard background color
+                $alpha_text.text(alpha_text_value);
+                $alpha_offset.css('background-color', picker.value);
+
+                // wpColorPicker clear button for update iris data alpha && alpha text && slider color option
+                $container.on('click', '.wp-picker-clear', function() {
+
+                  a8cIris._color._alpha = 1;
+                  $alpha_text.text('');
+                  $alpha_slider.slider('option', 'value', 100).trigger('slide');
+
+                });
+
+                // wpColorPicker default button for update iris data alpha && alpha text && slider color option
+                $container.on('click', '.wp-picker-default', function() {
+
+                  var default_picker = $.ot_ParseColorValue( $this.data('default-color') ),
+                      default_value  = parseFloat( default_picker.alpha / 100 ),
+                      default_text   = default_value < 1 ? default_value : '';
+
+                  a8cIris._color._alpha = default_value;
+                  $alpha_text.text(default_text);
+                  $alpha_slider.slider('option', 'value', default_picker.alpha).trigger('slide');
+
+                });
+
+                // show alpha wrapper on click color picker button
+                $container.on('click', '.wp-color-result', function() {
+                  $alpha_wrap.toggle();
+                });
+
+                // hide alpha wrapper on click body
+                $('body').on( 'click.wpcolorpicker', function() {
+                  $alpha_wrap.hide();
+                });
+
+              },
+
+              // slider: options
+              value: picker.alpha,
+              step: 1,
+              min: 1,
+              max: 100
+
+            });
+          }
+
+        });
+
       } else {
 
-        $( '#' + placeholder ).replaceWith( $( imageBox ) )
-        $( imageBox ).find('h3 span').text(option_tree.replace)
-        
+        // wpColorPicker default picker
+        $this.wpColorPicker({
+          change: function() {
+            $this.trigger('keyup');
+          }
+        });
+
       }
-      
-      // Show the metabox
-      $( '#ot-' + this.$id ).show()
-      
-    }
-  
-  }
-    
-  /* POSTFORMATS PLUGIN DEFINITION
-   * ======================= */
-  var old = $.fn.postformats
 
-  $.fn.postformats = function (option) {
-    return this.each(function () {
-      var $this = $(this)
-        , data = $this.data('postformats')
-        , options = typeof option == 'object' && option
-      if (!data) $this.data('postformats', (data = new Postformats(this, options)))
-      if (typeof option == 'string') data[option]()
-    })
-  }
+    });
 
-  $.fn.postformats.Constructor = Postformats
-  
-  /* POSTFORMATS NO CONFLICT
-   * ================= */
-  $.fn.postformats.noConflict = function () {
-    $.fn.postformats = old
-    return this
-  }
+  };
 
-  /* POSTFORMATS DATA-API
-   * ============== */
-  $(document).on('ready.postformats.data-api', function () {
-    $(formats).each(function () {
-      $(this).postformats()
-    })
-  })
+  $(document).ready( function(){
+    $('.hide-color-picker.ot-colorpicker-opacity').ot_wpColorPicker();
+  });
 
-}(window.jQuery);
+})( jQuery, window, document );

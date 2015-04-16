@@ -25,6 +25,13 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.ui-tabs li > a [class^="ot-icon-"], 
+.ui-tabs li > a [class*=" ot-icon-"] {
+  padding-right: 5px;
+  line-height: 18px;
+  vertical-align: middle;
+}
+
 .ot-icon-option-tree:before {
   content: "\e785";
 }
@@ -1834,11 +1841,13 @@ div.option-tree-ui-media-wrap {
 }
 .option-tree-setting .open {
   background: #fafafa;
-  cursor: move;
   line-height: 21px;
   height: 21px;
   padding: 10px 100px 10px 10px;
   display: block;
+}
+.option-tree-sortable .open {
+  cursor: move;
 }
 .ui-state-disabled .option-tree-setting .open {
   cursor: default;
@@ -2081,6 +2090,114 @@ li ul .format-setting-label {
 .option-tree-layout-activate.active .icon:before {
   content: "\f046";
   padding-left: 1px;
+}
+
+/* -------------------------------------------------- 
+  :: Option Group
+  ---------------------------------------------------*/
+.ot-option-group {
+  float: left;
+  padding-right: 5px;
+  position: relative;
+  width: 20%;
+  box-sizing: border-box;
+}
+.ot-option-group--three-fourths {
+  width: 75%;
+}
+.ot-option-group--two-thirds {
+  width: 66.6%;
+}
+.ot-option-group--one-half {
+  width: 50%;
+}
+.ot-option-group--one-third {
+  width: 33.3%;
+}
+.ot-option-group--one-fourth {
+  width: 25%;
+}
+.ot-option-group--one-fifth {
+  width: 20%;
+}
+.ot-option-group--one-sixth {
+  width: 16.6%;
+}
+.ot-option-group--one-eighth {
+  width: 12.5%;
+}
+.ot-option-group--is-last {
+  padding-right: 0;
+}
+.ot-option-group--icon {
+  background: #fafafa;
+  border-right: 1px solid #ccc;
+  display: inline-block;
+  font-size: 14px;
+  line-height: 14px;
+  padding: 6px 6px 7px;
+  position: absolute;
+  text-align: center;
+  top: 1px;
+  left: 1px;
+  width: 14px;
+  z-index: 10;
+}
+.ot-icon-circle.ot-option-group--icon:before {
+  left: 1px;
+  position: relative;
+  -webkit-filter: blur(1px);
+  -moz-filter: blur(1px);
+  -ms-filter: blur(1px);
+  -o-filter: blur(1px);
+  filter: blur(1px);
+}
+.ot-option-group--icon + input.option-tree-ui-input {
+  padding-left: 34px !important;
+  margin-right: 5px;
+}
+.ot-option-group--checkbox {
+  float: left;
+  padding-top: 2px;
+  padding-right: 10px;
+  width: auto;
+}
+#post-body .ot-option-group--checkbox p {
+  color: #a9a9a9;
+  float: left;
+  margin: 1px 0 0.3em 0 !important;
+}
+@media screen and ( min-width: 783px ) {
+  #post-body .ot-option-group--checkbox p input {
+    margin-top: 0px !important;
+  }
+}
+@media screen and ( max-width: 1020px ) {
+  .ot-option-group--one-fourth,
+  .ot-option-group--one-fifth,
+  .ot-option-group--one-sixth,
+  .ot-option-group--one-eighth {
+    width: 33.3%;
+  }
+  .ot-option-group--checkbox {
+    width: 100%;
+  }
+}
+@media screen and ( max-width: 782px ) {
+  .ot-option-group {
+    width: 50%;
+  }
+  .ot-option-group--three-fourths,
+  .ot-option-group--two-thirds,
+  .ot-option-group--one-half {
+    width: 100%;
+  }
+  .ot-option-group--checkbox {
+    padding-top: 0.3em;
+  }
+}
+.ot-option-group .select-wrapper {
+  width: 100%;
 }
 
 /* -------------------------------------------------- 
@@ -2375,10 +2492,20 @@ select.option-tree-ui-select option {
 .hide-color-picker {
   display: none;
 }
+.option-tree-ui-colorpicker-input-wrap .option-tree-ui-colorpicker-label {
+  height: 30px;
+  line-height: 30px;
+  margin-right: 10px;
+  display: block;
+}
+.type-link-color .option-tree-ui-colorpicker-input-wrap {
+  margin-right: 20px;
+}
 .option-tree-ui-colorpicker-input-wrap .wp-color-picker,
 .option-tree-ui-colorpicker-input-wrap .wp-picker-default,
 .option-tree-ui-colorpicker-input-wrap .wp-picker-clear {
   border-color: #ccc;
+  font-size: 12px !important;
   height: 29px !important;
   line-height: 27px !important;
   margin-top: 0px;
@@ -2388,6 +2515,9 @@ select.option-tree-ui-select option {
   -webkit-box-shadow: none;
      -moz-box-shadow: none;
           box-shadow: none;
+}
+.option-tree-ui-colorpicker-input-wrap .wp-color-picker {
+  margin: 0 0 5px 0 !important;
 }
 .option-tree-ui-colorpicker-input-wrap .wp-color-result {
   height: 27px;
@@ -2407,6 +2537,100 @@ select.option-tree-ui-select option {
   -webkit-border-radius: 2px;
      -moz-border-radius: 2px;
           border-radius: 2px;
+}
+@media screen and ( max-width: 782px ) {
+  .option-tree-ui-colorpicker-input-wrap .wp-color-picker {
+    padding: 3px 5px !important;
+  }
+  .option-tree-ui-colorpicker-input-wrap .wp-picker-clear,
+  .option-tree-ui-colorpicker-input-wrap .wp-picker-default {
+    margin-top: 4px;
+    padding: 0 8px 1px !important;
+  }
+}
+
+/* -------------------------------------------------- 
+  :: Colorpicker Opacity (Derivative work of the Codestar WP Color Picker.)
+  ---------------------------------------------------*/
+.option-tree-opacity-wrap {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-top: none;
+  border-radius: 0 0 2px 2px;
+  direction: ltr;
+  display: none;
+  padding: 10px;
+  position: relative;
+  top: -6px;
+  width: 235px;
+}
+.option-tree-opacity-slider {
+  left: 10px;
+  position: absolute;
+  width: 171px;
+  margin-left: 3px;
+  height: 28px;
+}
+.option-tree-opacity-slider .ui-slider-handle {
+  position: absolute;
+  top: -3px;
+  bottom: -3px;
+  z-index: 5;
+  border-color: #aaa;
+  border-style: solid;
+  border-width: 4px 3px;
+  width: 6px;
+  height: 26px;
+  margin: 0 -3px;
+  background: none;
+  cursor: ew-resize;
+  opacity: 0.9;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+.option-tree-opacity-slider .ui-slider-handle:before {
+  content: " ";
+  position: absolute;
+  left: -2px;
+  right: -2px;
+  top: -3px;
+  bottom: -3px;
+  border: 2px solid #fff;
+  border-radius: 3px;
+}
+.option-tree-opacity-slider-offset {
+  height: 28px;
+  width: 183px;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAAASCAYAAAAe/ZHXAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NkNEQUQ0ODM4RUE0MTFFNEExOEJFN0E5M0VFOTg0QUQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NkNEQUQ0ODQ4RUE0MTFFNEExOEJFN0E5M0VFOTg0QUQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo2Q0RBRDQ4MThFQTQxMUU0QTE4QkU3QTkzRUU5ODRBRCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo2Q0RBRDQ4MjhFQTQxMUU0QTE4QkU3QTkzRUU5ODRBRCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pv/r/N8AAAWYSURBVHjarFvvR3VBEN45JZGIPkREHyIiIhJJf3qUSERE9CGiDxERkcg9z9u92uucvTszz5z7xnHPj93Z2d359cxscn5+jpTS+EoiMr3/+51cZ2dn4+e29i2/u7y8RKf/pO3vc+o+n5ycoNK31+f6+jrfZ37yuG2mf3R01H3fa5N/b29vU6dP5qft0G4PDg5MGuPr/v4+jz1t27mfvN/b21P75+fHx8eZfiV/Ozs7rUJnSu/5+RlFv+m6ZJpbW1s1PnrvXl9fZ/qX89zY2LB4mfy+v7/nsdV1XltbK/dr5vnz87OcV5bJabuVlRVLBifjfX9/l/xkGtM+S0tLNXnu0szfU/P3IMn/k0678h6ddqjQFGccVL6hoCsVfsq+NZ5QtCv5rfFS41sq37W+UPhMyhxEWTetvce3NR8oewqD39qalXuGAK/WPltjajIC4x2c9Ye1f43SGcqGwRBeTZjhMNntL4pCWZMQYhE05RVl02EovRgC4RkCbUNSQAGhGB/GsKG4h6FQoigDa2i8fRBy3uLMXYIG3Vr3aZvRaCRdBYlYIMZywhBGCVhgzzOlgRuUSOvC0GMEWxOM/+EtQFh1OIIXtfwg1tRaayGjg5px0jyZKEaTle3e+AsLCygVRAh3FlEgKbReE3oYGj9EgIR00QiEgKw3ZBQbRGjBeAMtDETQmHiKDsezJNLgCTFGItZXlAgCSiQggblP+9c8SDI0lXWlFv5g3K63KZ51FOcZzthQ3LomoNHwJmKIQISI3vqzSpwIQ8liSjGMFQjDpoVgaQ6cWgvLhOC7qiAwiHrWbEg4JMSmeUrBuHoYwioOQNXmhmAcrs096s1gJCGi3hSEVU8DQxYElYHhKwUUGAa+NqOBMsSSAQJuhQhCAH4vxozExsxiihPuaIrjCVYKWlYEsjSM52G8Kxxryngl5j0j+EyGTIiED4s1Itm0ZGWxMFCLJaBAcEI6OBkmFgNBoc8Cait2ZnENE/6wQN8LJSJeSMNAjKVm+LUMAIt3PR5AQgIGp1Z5zxhE8PtXUYReYeXi4mKmOPNXBMzt2tPT07LIUtJqr66uusXEbkFnWiQ6Pj72ikrtzc1NKopuvbbj58PDwxqNHp27u7tuYWumUDV+v7+/Xyu6pc59+/DwUCsC9ujt7u6qRbt8//T01C3elbyN70fb29uZ/1FSincvLy/lPGb42tzc9IqJeHt7q61Pr2C6vr7u7tfHx8fMPhV0sLq6WhZtU0n36+uru8elPE7aLi8v1wqJPXn++fmZKYgX8ozFxcXJb0NaQTHClZT8+gBjsYdaFc+zWcUkGTCWENY66ta92oSVzo3WI6IZKGtukeyfBLFKBNAj6bUOBgaoe9wE4n04IBNkLMoC7+Skj630ZlTJMYdyMsU2T8AwpzALkVFilZgJcT2l9PCWDDSAMBSjVlJgZNk0lE1AIby0qCiCnBQNj6aBGQslZIZJ5hB6D/AzQHto5Z9Nk8tARdN4q2ExBnsyIJ311EymShyjan2rKk0zh1Ay1oQVWAZQRnkUA8RFw7TahjBnmNgMVMQrsCGZJezRtGlU0cUZ1zuaxGZPpbhApM+ZpFQqQ6xadoMtBrEKpBVo4GRXvNSxpaRixKiR+TChCYhsDwZkfFj8IkErjAHejcUI0XQrgwehhNSMHAz21E0wZ23FcCAmj8Sd/PXy2xLYLAuwRw4IMsqjFaWYOpMEhDySAPFCWyFkgAHrEcA+BNeJ4UE8HCzJPpCrerUmQIx1pWJkjqxJD8EikUo2c5aI8ZYgsAkM4WQtnHd0ns0ORgVTBghy5ISy928SGsbTMqYg523RUY8oNYG4FIYiyRyZCnFCJC87IoRAIMVOqQ7BKexxCS2hYVl9JhvlpYjnAe4MhmRPMWhhvLfXINaI9WKM0Zu0+SfAAFLE1EgfVSv7AAAAAElFTkSuQmCC);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.4) inset;
+  border-radius: 2px;
+}
+.option-tree-opacity-text {
+  position: absolute;
+  top: 15px;
+  left: 215px;
+  width: 30px;
+  font-size: 12px;
+  text-align: center;
+}
+
+/* -------------------------------------------------- 
+  :: Google Font
+  ---------------------------------------------------*/
+.type-google-font {
+
+}
+.type-google-font-group-clone {
+  display: none;
+}
+.type-google-font-group {
+  float: left;
+  margin-bottom: 20px;
+  width: 100%;
+}
+.js-remove-google-font.option-tree-ui-button.button {
+  margin-left: 0;
+  margin-top: 0;
 }
 
 /* -------------------------------------------------- 
@@ -2661,6 +2885,38 @@ ul.ot-gallery-list li img {
 }
 
 /* -------------------------------------------------- 
+  :: Google Fonts
+  ---------------------------------------------------*/
+.option-tree-google-font-family,
+.option-tree-google-font-variants,
+.option-tree-google-font-subsets {
+  float: left;
+  width: 20%;
+}
+.option-tree-google-font-family {
+  width: 100%;
+}
+#option-tree-settings-api p.checkbox-wrap,
+#post-body .ot-metabox-panels p.checkbox-wrap {
+  display: block;
+  float: left;
+  margin: 0.3em 0 !important;
+  width: 100%;
+}
+@media screen and ( max-width: 1020px ) {
+  .option-tree-google-font-variants,
+  .option-tree-google-font-subsets {
+    width: 33%;
+  }
+}
+@media screen and ( max-width: 782px ) {
+  .option-tree-google-font-variants,
+  .option-tree-google-font-subsets {
+    width: 50%;
+  }
+}
+
+/* -------------------------------------------------- 
   :: On/Off Switch
   ---------------------------------------------------*/
 .on-off-switch .slide-button {
@@ -2706,7 +2962,7 @@ ul.ot-gallery-list li img {
     position: relative;
     text-align: center;
     vertical-align: middle;
-    width: 50px;
+    width: 50%;
     z-index: 2;
   }
   .on-off-switch input:last-of-type + label {
@@ -2731,7 +2987,7 @@ ul.ot-gallery-list li img {
     position: absolute;
     text-decoration: none;
     top: -1px;
-    width: 51px;
+    width: 51%;
     z-index: 1;
     -webkit-border-radius: 2px;
        -moz-border-radius: 2px;
@@ -2747,7 +3003,7 @@ ul.ot-gallery-list li img {
     background: #b73b27;
     border-color: #7f291b;
     color: #fff;
-    left: 50px;
+    left: 50%;
     -webkit-box-shadow: inset 0 1px 0 rgba(229,134,119,0.6), 0 1px 0 rgba(0,0,0,.15);
        -moz-box-shadow: inset 0 1px 0 rgba(229,134,119,0.6), 0 1px 0 rgba(0,0,0,.15);
              box-shadow: inset 0 1px 0 rgba(229,134,119,0.6), 0 1px 0 rgba(0,0,0,.15);
@@ -2852,7 +3108,9 @@ ul.ot-gallery-list li img {
   :: CSS Editor
   ---------------------------------------------------*/
 #option-tree-settings-api pre.ot-css-editor,
-#poststuff .type-css pre.ot-css-editor {
+#poststuff .type-css pre.ot-css-editor,
+#option-tree-settings-api pre.ot-javascript-editor,
+#poststuff .type-javascript pre.ot-javascript-editor {
   bottom: 0;
   height: 280px;
   left: 0;
@@ -2861,7 +3119,8 @@ ul.ot-gallery-list li img {
   top: 0;
 }
 #option-tree-settings-api pre.ace-chrome,
-#poststuff .type-css pre.ace-chrome {
+#poststuff .type-css pre.ace-chrome,
+#poststuff .type-javascript pre.ace-chrome {
   background-color: #fff !important;
   border: 1px solid #ccc;
   -webkit-border-radius: 2px;
@@ -2869,14 +3128,16 @@ ul.ot-gallery-list li img {
           border-radius: 2px;
 }
 #option-tree-settings-api pre.ace-chrome:hover,
-#poststuff .type-css pre.ace-chrome:hover {
+#poststuff .type-css pre.ace-chrome:hover,
+#poststuff .type-javascript pre.ace-chrome:hover {
   border-color: #bbb !important;
   -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.0980392);
      -moz-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.0980392);
           box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.0980392);
 }
 #option-tree-settings-api pre.ace-chrome.ace_focus,
-#poststuff .type-css pre.ace-chrome.ace_focus {
+#poststuff .type-css pre.ace-chrome.ace_focus,
+#poststuff .type-javascript pre.ace-chrome.ace_focus {
   border-color: #999 !important;
   -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.0980392);
      -moz-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.0980392);
@@ -3651,28 +3912,24 @@ a.ui-datepicker-next {
   #side-sortables .ot-metabox-tabs.ui-tabs .ot-metabox-nav.ui-tabs-nav {
     margin-top: 10px;
   }
-  .ot-metabox-tabs.ui-tabs .ot-metabox-nav.ui-tabs-nav li.ui-state-default {
+  .ot-metabox-tabs.ui-tabs .ot-metabox-nav.ui-tabs-nav li {
     background: #fafafa;
-    border: 1px solid #ccc;
-    border-width: 1px 1px 0px 1px;
-    display: block;
-    float: left;
-    margin: 0 0 0 3px;
-    padding: 0;
-    outline: 0;
+    border: 1px solid #ccc !important;
+    border-width: 1px 1px 0px 1px !important;
+    display: inline-block !important;
+    margin: 0 0 0 3px !important;
+    padding: 0 !important;
+    outline: 0 !important;
+    width: auto !important;
     -webkit-border-radius: 2px 2px 0 0;
        -moz-border-radius: 2px 2px 0 0;
             border-radius: 2px 2px 0 0;
   }
   .ot-metabox-tabs.ui-tabs .ot-metabox-nav.ui-tabs-nav li:hover {
     background: #f1f1f1;
-    border: 1px solid #ccc;
-    border-width: 1px 1px 0px 1px;
   }
   .ot-metabox-tabs.ui-tabs .ot-metabox-nav.ui-tabs-nav li.ui-state-active {
     background: white;
-    border-color: #ccc;
-    border-width: 1px 1px 0px 1px;
     color: black;
     padding: 0;
     -webkit-border-radius: 2px 2px 0 0;
