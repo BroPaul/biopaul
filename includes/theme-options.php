@@ -201,7 +201,7 @@ function custom_theme_options() {
       ),
       array(
         'id'          => 'if_ajaxify',
-        'label'       => '全站Ajax加载',
+        'label'       => '是否开启全站Ajax',
         'desc'        => '如果希望全站播放背景音乐，请务必开启此项',
         'std'         => '',
         'type'        => 'on-off',
@@ -216,7 +216,7 @@ function custom_theme_options() {
       ),
       array(
         'id'          => 'custom_reloadjs',
-        'label'       => '重新加载JS',
+        'label'       => '重载JS',
         'desc'        => '开启全站Ajax后可能导致某些document.ready触发的功能失效（比如百度推荐），请在此处粘贴相应JS代码',
         'std'         => '',
         'type'        => 'textarea-simple',
@@ -231,26 +231,10 @@ function custom_theme_options() {
       ),
       array(
         'id'          => 'bgm',
-        'label'       => '背景音乐',
-        'desc'        => '支持 mp3/ogg 音乐或 js 列表，请填写网址或直接上传文件。
-上传音乐文件则启用单曲模式，默认自动播放音乐；上传列表文件则启用播放器模式，网页左下角显示播放器。js列表文件格式请参照“无需上传文件”文件夹中的 radio_content_example.js',
+        'label'       => '背景音乐列表',
+        'desc'        => '请填写js列表网址或直接上传文件，此处留空则不播放背景音乐。js列表格式请参照“无需上传文件”文件夹中的 radio_content_example.js',
         'std'         => '',
         'type'        => 'upload',
-        'section'     => 'advanced_settings',
-        'rows'        => '',
-        'post_type'   => '',
-        'taxonomy'    => '',
-        'min_max_step'=> '',
-        'class'       => '',
-        'condition'   => '',
-        'operator'    => 'and'
-      ),
-      array(
-        'id'          => 'bgm_loop',
-        'label'       => '是否循环播放',
-        'desc'        => '该设置只对单曲模式有效',
-        'std'         => '',
-        'type'        => 'on-off',
         'section'     => 'advanced_settings',
         'rows'        => '',
         'post_type'   => '',

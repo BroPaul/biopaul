@@ -4,7 +4,7 @@
 	Description: A responsive wordpress theme adapted from Biopic.
 	Author: Paul Allen
 	Author URI: http://bropaul.com/biopaul
-	Version: 2015.3.30
+	Version: 2015.5.12
 */
 
 /* 重置CSS & 基础样式 */
@@ -529,6 +529,7 @@ nav li.contact.current-menu-item a > span {background-position:-400px -160px;}
 .info-col {width: 35%;float: left;margin:10px 0;margin-right: 5%}
 .info-col input {width: 95%;position: relative;margin-bottom: 10px;}
 .embedSmiley {position: relative;left: 12px;top: 12px;}
+.wp-smiley{height: auto !important;max-height: none !important;}
 #wp-smiley-wrapper {
 	background-color: #eee;
 	padding: 3px 5px;
@@ -841,13 +842,8 @@ footer{
 	color: #D8000C;
 }
 
-#gotop i,#gotop i span{position: fixed;color: rgba(0, 153, 255, 0.75);font-size: 66px;bottom: 48px;right: 20px;}
-#gotop:hover i,#gotop:hover i span{color: #09f;}
-#bgmpause{right: 2px;background: rgba(0, 153, 255, 0.75);}
-#bgmstop{background: rgba(255, 90,123, 0.75);right: 58px;}
-#bgmpause,#bgmstop{color: white;position: fixed;padding:8px 12px;bottom:0;border-radius: 8px;}
-#bgmpause:hover{background-color: #09F;}
-#bgmstop:hover{background-color: #FF5A7B;}
+#gotop{position: fixed;color: rgba(0, 153, 255, 0.75);font-size: 66px;bottom: 48px;right: 20px;display: none}
+#gotop:hover{color: #09f;}
 #bg_grid,#bg_grid_gray{
 	position: fixed;
 	top: 0;
