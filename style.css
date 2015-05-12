@@ -635,7 +635,7 @@ address{text-align: justify;text-indent:2.5em;background: url(images/icons.png) 
 .main { float: left; width: 560px;}
 .single .main,.search-results .main{width: 600px;margin-left: -40px;}
 .main.full-width{width: 100%;margin-left: 0;}
-#mobnav{display: none;position: fixed;background: #09f;height: 36px;width: 100%;z-index: 12;}
+#mobnav{display: none;position: fixed;background: #09f;height: 36px;width: 100%;z-index: 12;top:0;box-shadow: 0 0 20px #06a;}
 #mobnav li{display: inline-block;float: left;width: 20%;text-align: center;line-height: 36px;}
 #mobnav li.current-menu-item{font-style:italic;font-weight:bold;}
 #mobnav li a{color: white;text-shadow: 1px 1px 2px #ccc;display: block;background: #09f;}
@@ -842,8 +842,8 @@ footer{
 	color: #D8000C;
 }
 
-#gotop{position: fixed;color: rgba(0, 153, 255, 0.75);font-size: 66px;bottom: 48px;right: 20px;display: none}
-#gotop:hover{color: #09f;}
+#gotop{position: fixed;color: rgba(0, 153, 255, 0.75);font-size: 66px;bottom: -100px;right: 5px;text-shadow:0 0 20px #06a;}
+#gotop:hover{color: #09f;text-shadow:0 0 15px #06a;}
 #bg_grid,#bg_grid_gray{
 	position: fixed;
 	top: 0;
