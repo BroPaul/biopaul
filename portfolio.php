@@ -19,12 +19,13 @@
 ?>
 	<div class="portfolio-items">
 		<ul class="filter clearfix" id="portfolio-filter">
-			<li data-text="all" class="active"><a href="#" data-filter="*"><?php _e('全部 | All', 'biopaul'); ?></a></li>
+			<li data-text="all" class="active"><a href="#" data-filter="*">全部 | All</a></li>
 <?php
 	$terms = get_terms("skills", 'hide_empty=1');
 	foreach ($terms as $term) {
 		$name_full=$term->name;
-		$name_en=strtolower( preg_replace('/[^a-zA-Z0-9]/','',$name_full));
+		$name_slug=$term->slug;
+		$name_en=strtolower(preg_replace('/[^a-zA-Z0-9]/','',$name_slug));
 ?>
 			<li><a href="#" data-filter=".<?php echo $name_en; ?>" ><?php echo $name_full; ?></a></li>
 <?php
@@ -53,7 +54,8 @@
 			$terms = array();
 			foreach ($terms_list as $term_item) {
 				$name_full=$term_item->name;
-				$name_en= preg_replace('/[^a-zA-Z0-9]/','',$name_full);
+				$name_slug=$term_item->slug;
+				$name_en= preg_replace('/[^a-zA-Z0-9]/','',$name_slug);
 				$terms[] = $name_en;
 			}
 			$terms_str = join(" ",$terms);

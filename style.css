@@ -4,7 +4,7 @@
 	Description: A responsive wordpress theme adapted from Biopic.
 	Author: Paul Allen
 	Author URI: http://bropaul.com/biopaul
-	Version: 2015.5.12
+	Version: 2015.7.23
 */
 
 /* 重置CSS & 基础样式 */
@@ -338,7 +338,7 @@ nav a {text-decoration: none;background-color: #09F;width: 35px; height: 35px; d
 nav a, nav a:hover, nav a:focus, nav a:visited {color: #fff;line-height: 250%; }
 nav a:hover,#mobnav li a:hover,#mobnav li.current-menu-item a{background-color: #0cF; }
 nav li {padding-left: 5px; margin-bottom: 5px;line-height: 0px; }
-nav li a span{ width: 100%; height: 100%; display: inline-block; }
+nav li a span{width: 100%; height: 100%; display: inline-block;overflow: hidden;}
 nav li a > span{background: url(images/icons.png) no-repeat transparent;}
 nav li a span:hover {cursor: pointer; }
 nav li a span span { visibility: hidden;color:#fff;}
